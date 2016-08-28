@@ -2,6 +2,7 @@ package com.example.alanpasi.spindroidupoa;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,6 +16,9 @@ import java.util.List;
 
 public class RidesAdapter extends RecyclerView.Adapter<RidesAdapter.ViewHolder>{
 
+    private static final String TAG = RidesAdapter.class.getSimpleName();
+
+
     Context context;
     List<Ride> rideList;
 
@@ -26,6 +30,8 @@ public class RidesAdapter extends RecyclerView.Adapter<RidesAdapter.ViewHolder>{
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
 
+        Log.d(TAG, "onCreateViewHolder -> parent ->" + parent);
+
         View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.ride, parent, false);
         ViewHolder viewHolder = new ViewHolder(itemView);
 
@@ -34,6 +40,8 @@ public class RidesAdapter extends RecyclerView.Adapter<RidesAdapter.ViewHolder>{
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
+
+        Log.d(TAG, "onBindViewHolder -> position ->" + position);
 
         holder.data.setText(rideList.get(position).getDate());
         holder.distance.setText(rideList.get(position).getDistance());
@@ -54,8 +62,9 @@ public class RidesAdapter extends RecyclerView.Adapter<RidesAdapter.ViewHolder>{
         TextView data, distance, payment, quantity, timeHour, timeMinute;
 
         public ViewHolder(View itemView) {
-
             super(itemView);
+
+            Log.d(TAG, "ViewHolder -> itemView ->" + itemView);
 
             data = (TextView) itemView.findViewById(R.id.rvdate);
             distance = (TextView) itemView.findViewById(R.id.rvdistance);

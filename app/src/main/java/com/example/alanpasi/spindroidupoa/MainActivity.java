@@ -1,12 +1,15 @@
 package com.example.alanpasi.spindroidupoa;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -22,6 +25,8 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
+    private static final String TAG = MainActivity.class.getSimpleName();
+
     DatabaseReference mRideRef;
 
     RecyclerView mRecyclerView;
@@ -34,19 +39,24 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
         mRecyclerView = (RecyclerView) findViewById(R.id.recyclerView);
 
+        Log.d(TAG, "mRecyclerView -> " + mRecyclerView);
+
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
         linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
+        linearLayoutManager.setReverseLayout(true);
+        linearLayoutManager.setStackFromEnd(true);
         mRecyclerView.setLayoutManager(linearLayoutManager);
-
-        carregarDados();
 
         adapter = new RidesAdapter(this, rideList);
         mRecyclerView.setAdapter(adapter);
+
+        loadDb();
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -74,15 +84,23 @@ public class MainActivity extends AppCompatActivity {
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_report) {
+
+            Log.d(TAG, "Chama Resumo");
+
+            Intent intent = new Intent(this, Resume.class);
+//            intent.putParcelableArrayListExtra("lista", rideList);
+            startActivity(intent);
+
             return true;
         }
 
         return super.onOptionsItemSelected(item);
     }
 
-    public void carregarDados(){
+    public void loadDb(){
 
         mRideRef = FirebaseDatabase.getInstance().getReference().child("Ride");
+        Log.d(TAG, "ladDB -> " + mRideRef);
 
         mRideRef.addValueEventListener(new ValueEventListener() {
             @Override
@@ -96,6 +114,9 @@ public class MainActivity extends AppCompatActivity {
                             day.getQuantity(),
                             day.getTimeHour(),
                             day.getTimeMinute()));
+
+                    Log.d(TAG, "dataSnapshot.getChildren -> " + dataSnapshot.getChildren());
+
                 }
 
                 mRecyclerView.setAdapter(adapter);
