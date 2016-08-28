@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "291609301367",
+    "firebase_url": "https://spindroidupoa.firebaseio.com",
+    "project_id": "spindroidupoa",
+    "storage_bucket": "spindroidupoa.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:291609301367:android:3487a177a5a70d7b",
+        "android_client_info": {
+          "package_name": "com.example.alanpasi.spindroidupoa"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "291609301367-4s7ftoavsnv8t22e068o6kekbok4n90a.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.alanpasi.spindroidupoa",
+            "certificate_hash": "8236A0578DBDF1DF27BF10E572ABF980B1AC225E"
+          }
+        },
+        {
+          "client_id": "291609301367-ffj674cam1csrrnkb17dikdc9fp0prcr.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB-TQ8JCnfCFK_UCL1nq2LCzR0GhpEprsY"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "291609301367-ffj674cam1csrrnkb17dikdc9fp0prcr.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
