@@ -6,12 +6,12 @@ package com.example.alanpasi.spindroidupoa;
 
 public class Ride {
 
-    String date;
-    String distance;
-    String payment;
-    String quantity;
-    String timeHour;
-    String timeMinute;
+    private String date;
+    private String distance;
+    private String payment;
+    private String quantity;
+    private String timeHour;
+    private String timeMinute;
 
     public Ride() {
     }

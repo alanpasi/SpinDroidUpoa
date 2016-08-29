@@ -2,7 +2,6 @@ package com.example.alanpasi.spindroidupoa;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Parcelable;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
@@ -45,7 +44,7 @@ public class MainActivity extends AppCompatActivity {
 
         mRecyclerView = (RecyclerView) findViewById(R.id.recyclerView);
 
-        Log.d(TAG, "mRecyclerView -> " + mRecyclerView);
+        Log.d(TAG, "mRecyclerView onCreate -> " + mRecyclerView);
 
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
         linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
@@ -85,10 +84,36 @@ public class MainActivity extends AppCompatActivity {
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_report) {
 
-            Log.d(TAG, "Chama Resumo");
+            int distanceSum = 0;
+            int quantitySum = 0;
+            int timeHourSum = 0;
+            int timeMinuteSum = 0;
+            double paymentSum = 0.0;
+            for (int i = 0; i < rideList.size(); i++ ){
+                distanceSum += Integer.parseInt(rideList.get(i).getDistance());
+                quantitySum += Integer.parseInt(rideList.get(i).getQuantity());
+                timeHourSum += Integer.parseInt(rideList.get(i).getTimeHour());
+                timeMinuteSum += Integer.parseInt(rideList.get(i).getTimeMinute());
+                paymentSum += Double.parseDouble(rideList.get(i).getPayment());
+            }
 
-            Intent intent = new Intent(this, Resume.class);
-//            intent.putParcelableArrayListExtra("lista", rideList);
+            String distance = String.valueOf(distanceSum);
+            String quantity = String.valueOf(quantitySum);
+            String timeHour = String.valueOf(timeHourSum);
+            String timMinute = String.valueOf(timeMinuteSum);
+//            String payment = String.valueOf(paymentSum);
+            String payment = getString(R.string.reaisFormat, paymentSum);
+
+            Intent intent = new Intent(getApplicationContext(), Resume.class);
+
+            Bundle bundle = new Bundle();
+            bundle.putString("distance", distance);
+            bundle.putString("quantity", quantity);
+            bundle.putString("timeHour", timeHour);
+            bundle.putString("timeMinute", timMinute);
+            bundle.putString("payment", payment);
+            intent.putExtras(bundle);
+
             startActivity(intent);
 
             return true;

@@ -11,16 +11,16 @@
     tools:context="com.example.alanpasi.spindroidupoa.Resume">
 
     <TextView
-        android:id="@+id/lblDayQuantity"
+        android:id="@+id/lblDistance"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:text="Quantidade de dias"
+        android:text="Distance"
         android:textSize="24sp" />
 
     <TextView
-        android:id="@+id/dayQuantity"
+        android:id="@+id/distance"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
@@ -29,74 +29,74 @@
         android:textSize="24sp" />
 
     <TextView
-        android:id="@+id/lblTotalEarn"
+        android:id="@+id/lblQuantity"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
-        android:layout_below="@+id/lblDayQuantity"
-        android:text="Total de ganhos"
-        android:textSize="24sp" />
-
-    <TextView
-        android:id="@+id/totalEarn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_below="@+id/dayQuantity"
-        android:text="0"
-        android:textSize="24sp" />
-
-    <TextView
-        android:id="@+id/lblTotalExpenses"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_below="@+id/lblTotalEarn"
-        android:text="Total de despesas"
-        android:textSize="24sp" />
-
-    <TextView
-        android:id="@+id/totalExpenses"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_below="@+id/totalEarn"
-        android:text="0"
-        android:textSize="24sp" />
-
-    <TextView
-        android:id="@+id/lblTotalOnlineTime"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_below="@+id/lblTotalExpenses"
-        android:text="Total de tempo OnLine"
-        android:textSize="24sp" />
-
-    <TextView
-        android:id="@+id/totalOnlineTime"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_below="@+id/totalExpenses"
-        android:text="0"
-        android:textSize="24sp" />
-
-    <TextView
-        android:id="@+id/lblTotalRides"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_below="@+id/lblTotalOnlineTime"
+        android:layout_below="@+id/distance"
         android:text="Total de viagens"
         android:textSize="24sp" />
 
     <TextView
-        android:id="@+id/totalRides"
+        android:id="@+id/quantity"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
-        android:layout_below="@+id/totalOnlineTime"
+        android:layout_below="@+id/distance"
+        android:text="0"
+        android:textSize="24sp" />
+
+    <TextView
+        android:id="@+id/lblTimeHour"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/lblQuantity"
+        android:text="Total de horas OnLine"
+        android:textSize="24sp" />
+
+    <TextView
+        android:id="@+id/timeHour"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_below="@+id/quantity"
+        android:text="0"
+        android:textSize="24sp" />
+
+    <TextView
+        android:id="@+id/lblTimeMinute"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/lblTimeHour"
+        android:text="Total de minutos OnLine"
+        android:textSize="24sp" />
+
+    <TextView
+        android:id="@+id/timeMinute"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_below="@+id/timeHour"
+        android:text="0"
+        android:textSize="24sp" />
+
+    <TextView
+        android:id="@+id/lblPayment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/lblTimeMinute"
+        android:text="Total de ganhos"
+        android:textSize="24sp" />
+
+    <TextView
+        android:id="@+id/payment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_below="@+id/timeMinute"
         android:text="0"
         android:textSize="24sp" />
 </RelativeLayout>
