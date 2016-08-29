@@ -1,5 +1,5 @@
 <resources>
     <string name="app_name">SpinDroidUpoa</string>
-    <string name="action_report">Relatório</string>
+    <string name="action_resume">Resumo</string>
     <string name="reaisFormat">%3.2f</string>
 </resources>

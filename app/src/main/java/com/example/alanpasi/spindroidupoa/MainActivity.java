@@ -82,7 +82,7 @@ public class MainActivity extends AppCompatActivity {
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_report) {
+        if (id == R.id.action_resume) {
 
             int distanceSum = 0;
             int quantitySum = 0;
