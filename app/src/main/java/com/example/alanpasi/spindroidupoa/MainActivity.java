@@ -101,8 +101,8 @@ public class MainActivity extends AppCompatActivity {
             String quantity = String.valueOf(quantitySum);
             String timeHour = String.valueOf(timeHourSum);
             String timMinute = String.valueOf(timeMinuteSum);
-//            String payment = String.valueOf(paymentSum);
             String payment = getString(R.string.reaisFormat, paymentSum);
+            String quantityDays = String.valueOf(rideList.size());
 
             Intent intent = new Intent(getApplicationContext(), Resume.class);
 
@@ -112,6 +112,8 @@ public class MainActivity extends AppCompatActivity {
             bundle.putString("timeHour", timeHour);
             bundle.putString("timeMinute", timMinute);
             bundle.putString("payment", payment);
+            bundle.putString("quantityDays", quantityDays);
+
             intent.putExtras(bundle);
 
             startActivity(intent);
