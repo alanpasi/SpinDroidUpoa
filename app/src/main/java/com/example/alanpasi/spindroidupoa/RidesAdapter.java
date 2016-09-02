@@ -19,15 +19,15 @@ import java.util.List;
  * Created by alanpasi on 28/08/16.
  */
 
-public class RidesAdapter extends RecyclerView.Adapter<RidesAdapter.ViewHolder> {
+class RidesAdapter extends RecyclerView.Adapter<RidesAdapter.ViewHolder> {
 
     private static final String TAG = RidesAdapter.class.getSimpleName();
 
 
-    Context context;
-    List<Ride> rideList;
+    private Context context;
+    private List<Ride> rideList;
 
-    public RidesAdapter(Context context, List<Ride> rideList) {
+    RidesAdapter(Context context, List<Ride> rideList) {
         this.context = context;
         this.rideList = rideList;
     }
@@ -38,15 +38,18 @@ public class RidesAdapter extends RecyclerView.Adapter<RidesAdapter.ViewHolder> 
         Log.d(TAG, "onCreateViewHolder -> parent ->" + parent);
 
         View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.ride, parent, false);
-        ViewHolder viewHolder = new ViewHolder(itemView);
 
-        return viewHolder;
+        return new ViewHolder(itemView);
     }
 
     @Override
-    public void onBindViewHolder(ViewHolder holder, final int position) {
+    public void onBindViewHolder(final ViewHolder holder, int position) {
+
+        final int itemPosition = holder.getAdapterPosition();
+
 
         Log.d(TAG, "onBindViewHolder -> position ->" + position);
+
 
         String result = null;
         try {
@@ -60,25 +63,27 @@ public class RidesAdapter extends RecyclerView.Adapter<RidesAdapter.ViewHolder> 
         holder.payment.setText("R$ " + rideList.get(position).getPayment());
         holder.quantity.setText(rideList.get(position).getQuantity() + " viagens");
         holder.timeHour.setText(rideList.get(position).getTimeHour() + " horas");
-        holder.timeMinute.setText(rideList.get(position).getTimeMinute() + "minutos");
+        holder.timeMinute.setText(rideList.get(position).getTimeMinute() + " minutos");
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
-                Log.d(TAG, "onBindViewHolder -> onClick -> Position ->" + position);
+                Log.d(TAG, "onBindViewHolder -> onClick -> Position ->" + itemPosition);
 
             }
         });
 
         final String finalResult = result;
+
         holder.itemView.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View view) {
 
-                Log.d(TAG, "holder.itemView.setOnLongClickListener -> onLongClick -> Data ->" + rideList.get(position).getDate());
 
-                String dtStart = rideList.get(position).getDate();
+                Log.d(TAG, "holder.itemView.setOnLongClickListener -> onLongClick -> Data ->" + rideList.get(itemPosition).getDate());
+
+                String dtStart = rideList.get(itemPosition).getDate();
                 SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
                 try {
                     Date date = format.parse(dtStart);
@@ -88,14 +93,8 @@ public class RidesAdapter extends RecyclerView.Adapter<RidesAdapter.ViewHolder> 
                     e.printStackTrace();
                 }
 
-                try {
-                    String result = getStringWeekDate(rideList.get(position).getDate());
-                } catch (ParseException e) {
-                    e.printStackTrace();
-                }
-
                 AlertDialog.Builder builder = new AlertDialog.Builder(context);
-                builder.setMessage("Apagar Cartão de " + finalResult + " dia " + rideList.get(position).getDate() + "?");
+                builder.setMessage("Apagar Cartão de " + finalResult + " dia " + rideList.get(itemPosition).getDate() + "?");
                 builder.setPositiveButton("Apagar", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {

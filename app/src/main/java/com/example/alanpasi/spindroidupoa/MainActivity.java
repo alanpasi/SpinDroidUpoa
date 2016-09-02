@@ -61,10 +61,16 @@ public class MainActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+//                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+//                        .setAction("Action", null).show();
+                addRide();
             }
         });
+    }
+
+    private void addRide() {
+        Intent intent = new Intent(this, AddRide.class);
+        startActivity(intent);
     }
 
     @Override
