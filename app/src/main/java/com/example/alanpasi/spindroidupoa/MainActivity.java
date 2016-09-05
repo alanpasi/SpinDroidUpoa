@@ -103,12 +103,13 @@ public class MainActivity extends AppCompatActivity {
                 paymentSum += Double.parseDouble(rideList.get(i).getPayment());
             }
 
-            String distance = String.valueOf(distanceSum);
-            String quantity = String.valueOf(quantitySum);
-            String timeHour = String.valueOf(timeHourSum);
-            String timMinute = String.valueOf(timeMinuteSum);
-            String payment = getString(R.string.reaisFormat, paymentSum);
-            String quantityDays = String.valueOf(rideList.size());
+            String distance = String.valueOf(distanceSum) + " km";
+            String quantity = String.valueOf(quantitySum) + " viagens";
+            double totalTime = timeHourSum + (timeMinuteSum / 60.0);
+            String timeHour = getString(R.string.reaisFormat, totalTime) + " h";
+//            String timMinute = String.valueOf(timeMinuteSum) + " min";
+            String payment = "R$ " + getString(R.string.reaisFormat, paymentSum);
+            String quantityDays = String.valueOf(rideList.size()) + " dias";
 
             Intent intent = new Intent(getApplicationContext(), Resume.class);
 
@@ -116,7 +117,7 @@ public class MainActivity extends AppCompatActivity {
             bundle.putString("distance", distance);
             bundle.putString("quantity", quantity);
             bundle.putString("timeHour", timeHour);
-            bundle.putString("timeMinute", timMinute);
+//            bundle.putString("timeMinute", timMinute);
             bundle.putString("payment", payment);
             bundle.putString("quantityDays", quantityDays);
 
