@@ -23,7 +23,6 @@ class RidesAdapter extends RecyclerView.Adapter<RidesAdapter.ViewHolder> {
 
     private static final String TAG = RidesAdapter.class.getSimpleName();
 
-
     private Context context;
     private List<Ride> rideList;
 
@@ -47,9 +46,7 @@ class RidesAdapter extends RecyclerView.Adapter<RidesAdapter.ViewHolder> {
 
         final int itemPosition = holder.getAdapterPosition();
 
-
         Log.d(TAG, "onBindViewHolder -> position ->" + position);
-
 
         String result = null;
         try {
