@@ -5,16 +5,26 @@ import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.FragmentActivity;
+import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.gms.appindexing.Action;
 import com.google.android.gms.appindexing.AppIndex;
 import com.google.android.gms.appindexing.Thing;
 import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class AddRide extends FragmentActivity {
+
+    private static final String TAG = AddRide.class.getSimpleName();
 
     private TextView mRideDate;
     private EditText mDistance;
@@ -22,6 +32,8 @@ public class AddRide extends FragmentActivity {
     private EditText mQuantity;
     private EditText mTotalHours;
     private EditText mTotalMinutes;
+
+    private DatabaseReference mRideRef;
 
     /**
      * ATTENTION: This was auto-generated to implement the App Indexing API.
@@ -51,9 +63,41 @@ public class AddRide extends FragmentActivity {
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+            public void onClick(final View view) {
+//                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+//                        .setAction("Action", null).show();
+
+                mRideRef = FirebaseDatabase.getInstance().getReference().child("Ride");
+
+                String dateInput = mRideDate.getText().toString();
+
+                Log.d(TAG, "mRideDate -> " + dateInput);
+
+                mRideRef.orderByChild("date").equalTo(dateInput)
+                        .addListenerForSingleValueEvent(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(DataSnapshot dataSnapshot) {
+                                if (dataSnapshot.hasChildren()) {
+
+                                    Log.d(TAG, "onDataChange");
+
+                                    Snackbar snackbar = Snackbar.make(view, "Data já existe!!!", Snackbar.LENGTH_LONG);
+                                    snackbar.show();
+
+                                }
+                                else {
+
+                                    saveRide(view);
+
+                                }
+                            }
+
+                            @Override
+                            public void onCancelled(DatabaseError databaseError) {
+
+                            }
+                        });
+
             }
         });
 
@@ -96,5 +140,45 @@ public class AddRide extends FragmentActivity {
         // See https://g.co/AppIndexing/AndroidStudio for more information.
         AppIndex.AppIndexApi.end(client, getIndexApiAction());
         client.disconnect();
+    }
+
+    private void saveRide(View view) {
+
+        String rideDateValue = mRideDate.getText().toString().trim();
+        String distanceValue = mDistance.getText().toString();
+        String paymentValue = mPayment.getText().toString();
+        String quantityValue = mQuantity.getText().toString();
+        String totalHoursValue = mTotalHours.getText().toString();
+        String totalMinutesValue = mTotalMinutes.getText().toString();
+
+        double pagamento = Double.parseDouble(paymentValue);
+        String paymentFormated = getString(R.string.reaisFormat, pagamento);
+
+        if(!TextUtils.isEmpty(rideDateValue)
+                && !TextUtils.isEmpty(distanceValue)
+                && !TextUtils.isEmpty(paymentValue)
+                && !TextUtils.isEmpty(quantityValue)
+                && !TextUtils.isEmpty(totalHoursValue)
+                && !TextUtils.isEmpty(totalMinutesValue)){
+
+            DatabaseReference newPost = mRideRef.push();
+            newPost.child("date").setValue(rideDateValue);
+            newPost.child("distance").setValue(distanceValue);
+            newPost.child("payment").setValue(paymentFormated);
+            newPost.child("quantity").setValue(quantityValue);
+            newPost.child("timeHour").setValue(totalHoursValue);
+            newPost.child("timeMinute").setValue(totalMinutesValue);
+
+            Snackbar snackbar = Snackbar.make(view, "Incluído", Snackbar.LENGTH_LONG);
+            snackbar.show();
+
+            Log.d(TAG, "rideDatevalue -> " + rideDateValue);
+
+            finish();
+
+        }
+        else {
+            Toast.makeText(this, "Favor preencher todos campos ou\n pressionar botão de retorno.", Toast.LENGTH_LONG).show();
+        }
     }
 }

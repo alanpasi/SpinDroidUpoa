@@ -2,6 +2,7 @@ package com.example.alanpasi.spindroidupoa;
 
 import android.content.Context;
 import android.content.DialogInterface;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -9,6 +10,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -25,6 +32,8 @@ class RidesAdapter extends RecyclerView.Adapter<RidesAdapter.ViewHolder> {
 
     private Context context;
     private List<Ride> rideList;
+
+    private DatabaseReference mRideRef;
 
     RidesAdapter(Context context, List<Ride> rideList) {
         this.context = context;
@@ -62,6 +71,9 @@ class RidesAdapter extends RecyclerView.Adapter<RidesAdapter.ViewHolder> {
         holder.timeHour.setText(rideList.get(position).getTimeHour() + " horas");
         holder.timeMinute.setText(rideList.get(position).getTimeMinute() + " minutos");
 
+
+        final Ride infoData = rideList.get(position);
+
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -75,7 +87,7 @@ class RidesAdapter extends RecyclerView.Adapter<RidesAdapter.ViewHolder> {
 
         holder.itemView.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
-            public boolean onLongClick(View view) {
+            public boolean onLongClick(final View view) {
 
 
                 Log.d(TAG, "holder.itemView.setOnLongClickListener -> onLongClick -> Data ->" + rideList.get(itemPosition).getDate());
@@ -95,6 +107,8 @@ class RidesAdapter extends RecyclerView.Adapter<RidesAdapter.ViewHolder> {
                 builder.setPositiveButton("Apagar", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
+
+                        removeCardItem(view, infoData);
 
                     }
                 });
@@ -146,5 +160,35 @@ class RidesAdapter extends RecyclerView.Adapter<RidesAdapter.ViewHolder> {
 
         SimpleDateFormat dateformatWeek = new SimpleDateFormat("EEEE");
         return dateformatWeek.format(date);
+    }
+
+    private void removeCardItem(final View view, Ride infoData) {
+
+        final int CurrPosition = rideList.indexOf(infoData);
+
+        mRideRef = FirebaseDatabase.getInstance().getReference().child("Ride");
+
+        mRideRef.orderByChild("date").equalTo(rideList.get(CurrPosition).getDate())
+                .addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+                        if (dataSnapshot.hasChildren()) {
+                            DataSnapshot firstChild = dataSnapshot.getChildren().iterator().next();
+                            firstChild.getRef().removeValue();
+
+                            rideList.remove(CurrPosition);
+                            notifyItemRemoved(CurrPosition);
+
+                            Snackbar snackbar = Snackbar.make(view, "Excluído", Snackbar.LENGTH_LONG);
+                            snackbar.show();
+
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) {
+
+                    }
+                });
     }
 }
