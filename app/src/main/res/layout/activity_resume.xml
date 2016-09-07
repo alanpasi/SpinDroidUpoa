@@ -64,30 +64,14 @@
         android:text="0"
         android:textSize="18sp" />
 
-    <TextView
-        android:id="@+id/lblTimeMinute"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_below="@+id/lblTimeHour"
-        android:text="Total de minutos OnLine"
-        android:textSize="18sp" />
 
-    <TextView
-        android:id="@+id/timeMinute"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_below="@+id/timeHour"
-        android:text="0"
-        android:textSize="18sp" />
 
     <TextView
         android:id="@+id/lblPayment"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
-        android:layout_below="@+id/lblTimeMinute"
+        android:layout_below="@+id/lblTimeHour"
         android:text="Total de ganhos"
         android:textSize="18sp" />
 
@@ -96,7 +80,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
-        android:layout_below="@+id/timeMinute"
+        android:layout_below="@+id/timeHour"
         android:text="0"
         android:textSize="18sp" />
 
@@ -115,6 +99,58 @@
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         android:layout_below="@+id/payment"
+        android:text="0"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/lblReaisByDistance"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/lblQuantityDays"
+        android:text="Reais por km"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/reaisByDistance"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_below="@+id/quantityDays"
+        android:text="0"
+        android:textSize="18sp" />
+    <TextView
+        android:id="@+id/lblReaisByDay"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/lblReaisByDistance"
+        android:text="Reais por dia"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/reaisByDay"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_below="@+id/reaisByDistance"
+        android:text="0"
+        android:textSize="18sp" />
+    <TextView
+        android:id="@+id/lblReaisByHour"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/lblReaisByDay"
+        android:text="Reais por hora"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/reaisByHour"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_below="@+id/reaisByDay"
         android:text="0"
         android:textSize="18sp" />
 </RelativeLayout>

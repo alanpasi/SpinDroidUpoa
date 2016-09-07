@@ -12,6 +12,7 @@ import android.util.Log;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -110,6 +111,14 @@ public class MainActivity extends AppCompatActivity {
 //            String timMinute = String.valueOf(timeMinuteSum) + " min";
             String payment = "R$ " + getString(R.string.reaisFormat, paymentSum);
             String quantityDays = String.valueOf(rideList.size()) + " dias";
+            double reaisByDistance = paymentSum/distanceSum;
+            String reaisByDistanceMid = getString(R.string.reaisFormat, reaisByDistance) + " R$/km";
+            double reaisByDay = paymentSum/rideList.size();
+            String reaisByDaysMid = getString(R.string.reaisFormat, reaisByDay) + " R$/dia";
+            double reaisByHour = paymentSum/totalTime;
+            String reaisByHourMid = getString(R.string.reaisFormat, reaisByHour) + " R$/h";
+
+//            Toast.makeText(this, reaisByDistanceMid, Toast.LENGTH_SHORT).show();
 
             Intent intent = new Intent(getApplicationContext(), Resume.class);
 
@@ -120,6 +129,9 @@ public class MainActivity extends AppCompatActivity {
 //            bundle.putString("timeMinute", timMinute);
             bundle.putString("payment", payment);
             bundle.putString("quantityDays", quantityDays);
+            bundle.putString("reaisByDistance", reaisByDistanceMid);
+            bundle.putString("reaisByDay", reaisByDaysMid);
+            bundle.putString("reaisByHour", reaisByHourMid);
 
             intent.putExtras(bundle);
 

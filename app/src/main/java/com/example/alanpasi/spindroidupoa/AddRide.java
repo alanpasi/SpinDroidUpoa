@@ -153,6 +153,9 @@ public class AddRide extends FragmentActivity {
 
         double pagamento = Double.parseDouble(paymentValue);
         String paymentFormated = getString(R.string.reaisFormat, pagamento);
+        paymentFormated = paymentFormated.replace(',', '.');
+
+        Log.d(TAG, "paymentFormated -> " + paymentFormated);
 
         if(!TextUtils.isEmpty(rideDateValue)
                 && !TextUtils.isEmpty(distanceValue)

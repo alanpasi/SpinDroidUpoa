@@ -19,7 +19,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
-            android:text="Ride"
+            android:text="Dia da semana"
             android:textSize="18sp" />
 
         <TextView
@@ -31,6 +31,16 @@
             android:text="Data"
             android:textSize="24sp"
             android:textStyle="normal|bold" />
+
+        <TextView
+            android:id="@+id/rvreaisbydistance"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentTop="true"
+            android:text="R$/km"
+            android:textSize="18sp"
+            android:textAllCaps="false" />
 
         <TextView
             android:id="@+id/rvdistance"
