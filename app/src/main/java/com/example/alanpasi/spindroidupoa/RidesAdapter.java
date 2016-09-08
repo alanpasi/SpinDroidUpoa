@@ -65,21 +65,27 @@ class RidesAdapter extends RecyclerView.Adapter<RidesAdapter.ViewHolder> {
         }
         holder.dataWeek.setText(result);
         holder.data.setText(rideList.get(position).getDate());
-        Log.d(TAG, "rideList.get(position).getPayment() ->" + rideList.get(position).getPayment());
-        Log.d(TAG, "rideList.get(position).getDistance() ->" + rideList.get(position).getDistance());
-
 
         double reaisByDistance = Double.parseDouble(rideList.get(position).getPayment())/Double.parseDouble(rideList.get(position).getDistance());
-
         Log.d(TAG, "reaisByDistance ->" + reaisByDistance);
-
         String reaisByDistanceMid = context.getString(R.string.reaisFormat, reaisByDistance) + " R$/km";
         holder.reaisbydistance.setText(reaisByDistanceMid);
+
+        double decimalHours = Double.parseDouble(rideList.get(position).getTimeHour()) + (Double.parseDouble(rideList.get(position).getTimeMinute()) / 60d);
+        double reaisByHour = Double.parseDouble(rideList.get(position).getPayment()) / decimalHours;
+        String reaisByHourMid = context.getString(R.string.reaisFormat, reaisByHour) + " R$/h";
+        holder.reaisbyhour.setText(reaisByHourMid);
+
         holder.distance.setText(rideList.get(position).getDistance() + " km");
         holder.payment.setText("R$ " + rideList.get(position).getPayment());
         holder.quantity.setText(rideList.get(position).getQuantity() + " viagens");
         holder.timeHour.setText(rideList.get(position).getTimeHour() + " horas");
         holder.timeMinute.setText(rideList.get(position).getTimeMinute() + " minutos");
+
+        double indice = reaisByDistance * reaisByHour;
+        String indiceFinal = context.getString(R.string.reaisFormat, indice);
+        holder.indice.setText(indiceFinal);
+
 
 
         final Ride infoData = rideList.get(position);
@@ -145,7 +151,7 @@ class RidesAdapter extends RecyclerView.Adapter<RidesAdapter.ViewHolder> {
 
     public class ViewHolder extends RecyclerView.ViewHolder {
 
-        TextView dataWeek, reaisbydistance, data, distance, payment, quantity, timeHour, timeMinute;
+        TextView dataWeek, reaisbydistance, reaisbyhour ,data, distance, payment, quantity, timeHour, timeMinute, indice;
 
         public ViewHolder(View itemView) {
             super(itemView);
@@ -155,11 +161,13 @@ class RidesAdapter extends RecyclerView.Adapter<RidesAdapter.ViewHolder> {
             dataWeek = (TextView) itemView.findViewById(R.id.rvdatelabel);
             data = (TextView) itemView.findViewById(R.id.rvdate);
             reaisbydistance = (TextView) itemView.findViewById(R.id.rvreaisbydistance);
+            reaisbyhour = (TextView) itemView.findViewById(R.id.rvreaisbyhour);
             distance = (TextView) itemView.findViewById(R.id.rvdistance);
             payment = (TextView) itemView.findViewById(R.id.rvpayment);
             quantity = (TextView) itemView.findViewById(R.id.rvquantity);
             timeHour = (TextView) itemView.findViewById(R.id.rvtimehour);
             timeMinute = (TextView) itemView.findViewById(R.id.rvtimeminute);
+            indice = (TextView) itemView.findViewById(R.id.rvindice);
         }
     }
 

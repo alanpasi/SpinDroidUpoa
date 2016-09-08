@@ -28,6 +28,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
             android:layout_below="@id/rvdatelabel"
+            android:layout_marginBottom="36dp"
             android:text="Data"
             android:textSize="24sp"
             android:textStyle="normal|bold" />
@@ -39,15 +40,26 @@
             android:layout_alignParentEnd="true"
             android:layout_alignParentTop="true"
             android:text="R$/km"
-            android:textSize="18sp"
-            android:textAllCaps="false" />
+            android:textAllCaps="false"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/rvreaisbyhour"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_below="@id/rvreaisbydistance"
+            android:layout_marginBottom="16dp"
+            android:text="R$/h"
+            android:textAllCaps="false"
+            android:textSize="16sp" />
 
         <TextView
             android:id="@+id/rvdistance"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
-            android:layout_below="@id/rvdate"
+            android:layout_below="@id/rvreaisbyhour"
             android:text="Distância"
             android:textAlignment="textEnd"
             android:textSize="18sp" />
@@ -90,6 +102,25 @@
             android:layout_below="@id/rvtimehour"
             android:text="Minutos"
             android:textAlignment="textEnd"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/rvindice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_below="@id/rvdate"
+            android:layout_marginBottom="1dp"
+            android:text="Indice"
+            android:textSize="44sp" />
+
+        <TextView
+            android:id="@+id/rvperformance"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_below="@id/rvindice"
+            android:text="Desempenho"
             android:textSize="18sp" />
 
     </RelativeLayout>
