@@ -14,24 +14,25 @@
         android:padding="16dp">
 
         <TextView
-            android:id="@+id/rvdatelabel"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true"
-            android:text="Dia da semana"
-            android:textSize="18sp" />
-
-        <TextView
             android:id="@+id/rvdate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
-            android:layout_below="@id/rvdatelabel"
-            android:layout_marginBottom="36dp"
+            android:layout_alignParentTop="true"
             android:text="Data"
             android:textSize="24sp"
             android:textStyle="normal|bold" />
+
+        <TextView
+            android:id="@+id/rvdatelabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_marginBottom="36dp"
+
+            android:layout_below="@id/rvdate"
+            android:text="Dia da semana"
+            android:textSize="18sp" />
 
         <TextView
             android:id="@+id/rvreaisbydistance"
@@ -109,31 +110,31 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
-            android:layout_below="@id/rvdate"
+            android:layout_below="@id/rvdatelabel"
             android:layout_marginBottom="1dp"
+            android:layout_toStartOf="@+id/rvimageview"
             android:text="Indice"
-            android:textSize="44sp"
             android:textAlignment="center"
-            android:layout_toStartOf="@+id/rvimageview" />
+            android:textSize="44sp" />
 
         <TextView
             android:id="@+id/rvperformance"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_alignEnd="@+id/rvindice"
             android:layout_alignParentStart="true"
             android:layout_below="@id/rvindice"
             android:text="Desempenho"
-            android:textSize="18sp"
             android:textAlignment="center"
-            android:layout_alignEnd="@+id/rvindice" />
+            android:textSize="18sp" />
 
         <ImageView
+            android:id="@+id/rvimageview"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:srcCompat="@drawable/ic_action_good"
-            android:id="@+id/rvimageview"
             android:layout_below="@+id/rvpayment"
-            android:layout_centerHorizontal="true" />
+            android:layout_centerHorizontal="true"
+            app:srcCompat="@drawable/ic_action_good" />
 
     </RelativeLayout>
 </android.support.v7.widget.CardView>

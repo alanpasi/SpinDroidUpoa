@@ -117,6 +117,8 @@ public class MainActivity extends AppCompatActivity {
             String reaisByDaysMid = getString(R.string.reaisFormat, reaisByDay) + " R$/dia";
             double reaisByHour = paymentSum/totalTime;
             String reaisByHourMid = getString(R.string.reaisFormat, reaisByHour) + " R$/h";
+            double indice = reaisByDistance * reaisByHour;
+            String indiceMid = getString(R.string.reaisFormat, indice);
 
 //            Toast.makeText(this, reaisByDistanceMid, Toast.LENGTH_SHORT).show();
 
@@ -132,6 +134,7 @@ public class MainActivity extends AppCompatActivity {
             bundle.putString("reaisByDistance", reaisByDistanceMid);
             bundle.putString("reaisByDay", reaisByDaysMid);
             bundle.putString("reaisByHour", reaisByHourMid);
+            bundle.putString("indice", indiceMid);
 
             intent.putExtras(bundle);
 

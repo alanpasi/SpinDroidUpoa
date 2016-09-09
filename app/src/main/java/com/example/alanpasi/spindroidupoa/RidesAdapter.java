@@ -83,8 +83,8 @@ class RidesAdapter extends RecyclerView.Adapter<RidesAdapter.ViewHolder> {
         holder.distance.setText(rideList.get(position).getDistance() + " km");
         holder.payment.setText("R$ " + rideList.get(position).getPayment());
         holder.quantity.setText(rideList.get(position).getQuantity() + " viagens");
-        holder.timeHour.setText(rideList.get(position).getTimeHour() + " horas");
-        holder.timeMinute.setText(rideList.get(position).getTimeMinute() + " minutos");
+        holder.timeHour.setText(rideList.get(position).getTimeHour() + " h");
+        holder.timeMinute.setText(rideList.get(position).getTimeMinute() + " min");
 
         double indice = reaisByDistance * reaisByHour;
         String indiceFinal = context.getString(R.string.reaisFormat, indice);
@@ -183,20 +183,6 @@ class RidesAdapter extends RecyclerView.Adapter<RidesAdapter.ViewHolder> {
             timeMinute = (TextView) itemView.findViewById(R.id.rvtimeminute);
             indice = (TextView) itemView.findViewById(rvindice);
             indiceimageview = (ImageView) itemView.findViewById(R.id.rvimageview);
-
-
-            Log.d(TAG, "ViewHolder -> indice ->" + indice);
-            Log.d(TAG, "ViewHolder -> indice -> double ->" + rvindice);
-
-
-//            double isBad = 11.0d;
-//            if(isBad < 12.0d){
-//                indiceimageview.setImageResource(R.drawable.ic_action_bad);
-//            }
-//            else {
-//                indiceimageview.setImageResource(R.drawable.ic_action_good);
-//            }
-
         }
     }
 
