@@ -159,7 +159,8 @@ public class MainActivity extends AppCompatActivity {
                             day.getPayment(),
                             day.getQuantity(),
                             day.getTimeHour(),
-                            day.getTimeMinute()));
+                            day.getTimeMinute(),
+                            day.getImageView()));
 
                     Log.d(TAG, "dataSnapshot.getChildren -> " + dataSnapshot.getChildren());
 

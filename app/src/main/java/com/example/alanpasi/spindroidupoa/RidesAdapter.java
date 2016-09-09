@@ -2,6 +2,7 @@ package com.example.alanpasi.spindroidupoa;
 
 import android.content.Context;
 import android.content.DialogInterface;
+import android.graphics.Color;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.RecyclerView;
@@ -9,6 +10,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.google.firebase.database.DataSnapshot;
@@ -21,6 +23,8 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
+
+import static com.example.alanpasi.spindroidupoa.R.id.rvindice;
 
 /**
  * Created by alanpasi on 28/08/16.
@@ -86,7 +90,13 @@ class RidesAdapter extends RecyclerView.Adapter<RidesAdapter.ViewHolder> {
         String indiceFinal = context.getString(R.string.reaisFormat, indice);
         holder.indice.setText(indiceFinal);
 
-
+        if (indice >= 12.0d) {
+            holder.indiceimageview.setImageResource(R.drawable.ic_action_good);
+            holder.indiceimageview.setColorFilter(Color.GREEN);
+        } else {
+            holder.indiceimageview.setImageResource(R.drawable.ic_action_bad);
+            holder.indiceimageview.setColorFilter(Color.RED);
+        }
 
         final Ride infoData = rideList.get(position);
 
@@ -104,7 +114,6 @@ class RidesAdapter extends RecyclerView.Adapter<RidesAdapter.ViewHolder> {
         holder.itemView.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(final View view) {
-
 
                 Log.d(TAG, "holder.itemView.setOnLongClickListener -> onLongClick -> Data ->" + rideList.get(itemPosition).getDate());
 
@@ -146,12 +155,17 @@ class RidesAdapter extends RecyclerView.Adapter<RidesAdapter.ViewHolder> {
 
     @Override
     public int getItemCount() {
-        return rideList.size();
+        if (rideList.size() != 0) {
+            return rideList.size();
+        }
+        return 0;
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
 
         TextView dataWeek, reaisbydistance, reaisbyhour ,data, distance, payment, quantity, timeHour, timeMinute, indice;
+
+        ImageView indiceimageview;
 
         public ViewHolder(View itemView) {
             super(itemView);
@@ -167,7 +181,22 @@ class RidesAdapter extends RecyclerView.Adapter<RidesAdapter.ViewHolder> {
             quantity = (TextView) itemView.findViewById(R.id.rvquantity);
             timeHour = (TextView) itemView.findViewById(R.id.rvtimehour);
             timeMinute = (TextView) itemView.findViewById(R.id.rvtimeminute);
-            indice = (TextView) itemView.findViewById(R.id.rvindice);
+            indice = (TextView) itemView.findViewById(rvindice);
+            indiceimageview = (ImageView) itemView.findViewById(R.id.rvimageview);
+
+
+            Log.d(TAG, "ViewHolder -> indice ->" + indice);
+            Log.d(TAG, "ViewHolder -> indice -> double ->" + rvindice);
+
+
+//            double isBad = 11.0d;
+//            if(isBad < 12.0d){
+//                indiceimageview.setImageResource(R.drawable.ic_action_bad);
+//            }
+//            else {
+//                indiceimageview.setImageResource(R.drawable.ic_action_good);
+//            }
+
         }
     }
 
