@@ -28,9 +28,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
-            android:layout_marginBottom="36dp"
-
             android:layout_below="@id/rvdate"
+
+            android:layout_marginBottom="36dp"
             android:text="Dia da semana"
             android:textSize="18sp" />
 
@@ -42,7 +42,8 @@
             android:layout_alignParentTop="true"
             android:text="R$/km"
             android:textAllCaps="false"
-            android:textSize="16sp" />
+            android:textSize="14sp"
+            android:textStyle="normal|bold" />
 
         <TextView
             android:id="@+id/rvreaisbyhour"
@@ -53,7 +54,8 @@
             android:layout_marginBottom="16dp"
             android:text="R$/h"
             android:textAllCaps="false"
-            android:textSize="16sp" />
+            android:textSize="14sp"
+            android:textStyle="normal|bold" />
 
         <TextView
             android:id="@+id/rvdistance"
@@ -126,7 +128,7 @@
             android:layout_below="@id/rvindice"
             android:text="Desempenho"
             android:textAlignment="center"
-            android:textSize="18sp" />
+            android:textSize="16sp" />
 
         <ImageView
             android:id="@+id/rvimageview"
