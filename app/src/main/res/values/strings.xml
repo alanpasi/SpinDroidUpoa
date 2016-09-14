@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">SpinDroidUpoa</string>
     <string name="action_resume">Resumo</string>
+    <string name="action_performance">Desempenho</string>
     <string name="reaisFormat">%3.2f</string>
     <string name="title_activity_add_ride">AddRide</string>
 </resources>

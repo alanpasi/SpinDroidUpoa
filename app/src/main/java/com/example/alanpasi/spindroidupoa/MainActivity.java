@@ -108,7 +108,6 @@ public class MainActivity extends AppCompatActivity {
             String quantity = String.valueOf(quantitySum) + " viagens";
             double totalTime = timeHourSum + (timeMinuteSum / 60.0);
             String timeHour = getString(R.string.reaisFormat, totalTime) + " h";
-//            String timMinute = String.valueOf(timeMinuteSum) + " min";
             String payment = "R$ " + getString(R.string.reaisFormat, paymentSum);
             String quantityDays = String.valueOf(rideList.size()) + " dias";
             double reaisByDistance = paymentSum/distanceSum;
@@ -120,15 +119,12 @@ public class MainActivity extends AppCompatActivity {
             double indice = reaisByDistance * reaisByHour;
             String indiceMid = getString(R.string.reaisFormat, indice);
 
-//            Toast.makeText(this, reaisByDistanceMid, Toast.LENGTH_SHORT).show();
-
             Intent intent = new Intent(getApplicationContext(), Resume.class);
 
             Bundle bundle = new Bundle();
             bundle.putString("distance", distance);
             bundle.putString("quantity", quantity);
             bundle.putString("timeHour", timeHour);
-//            bundle.putString("timeMinute", timMinute);
             bundle.putString("payment", payment);
             bundle.putString("quantityDays", quantityDays);
             bundle.putString("reaisByDistance", reaisByDistanceMid);
@@ -141,6 +137,23 @@ public class MainActivity extends AppCompatActivity {
             startActivity(intent);
 
             return true;
+        }
+
+        if (id == R.id.action_performance) {
+            Toast.makeText(this, "Selecionado Desempenho", Toast.LENGTH_SHORT).show();
+
+            ArrayList<String> graphData = new ArrayList<>();
+
+
+            Intent intent = new Intent(getApplicationContext(), Performance.class);
+
+            for (int i = 0; i < rideList.size(); i++ ){
+                graphData.add(rideList.get(i).getDate() + ";" + rideList.get(i).getPayment());
+            }
+
+            intent.putStringArrayListExtra("graphData", graphData);
+
+            startActivity(intent);
         }
 
         return super.onOptionsItemSelected(item);

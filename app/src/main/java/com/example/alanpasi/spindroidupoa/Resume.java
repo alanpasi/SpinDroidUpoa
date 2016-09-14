@@ -10,7 +10,6 @@ public class Resume extends AppCompatActivity {
     TextView distance;
     TextView quantity;
     TextView timeHour;
-//    TextView timeMinute;
     TextView payment;
     TextView quantityDays;
     TextView reaisByDistance;
@@ -26,7 +25,6 @@ public class Resume extends AppCompatActivity {
         distance = (TextView) findViewById(R.id.distance);
         quantity = (TextView) findViewById(R.id.quantity);
         timeHour = (TextView) findViewById(R.id.timeHour);
-//        timeMinute = (TextView) findViewById(R.id.timeMinute);
         payment = (TextView) findViewById(R.id.payment);
         quantityDays = (TextView) findViewById(R.id.quantityDays);
         reaisByDistance = (TextView) findViewById(R.id.reaisByDistance);
@@ -38,7 +36,6 @@ public class Resume extends AppCompatActivity {
         String distanceSum = bundle.getString("distance");
         String quantitySum = bundle.getString("quantity");
         String timeHourSum = bundle.getString("timeHour");
-//        String timeMinuteSum = bundle.getString("timeMinute");
         String paymentSum = bundle.getString("payment");
         String quatityDaysSum = bundle.getString("quantityDays");
         String reaisByDistanceMid = bundle.getString("reaisByDistance");
@@ -49,7 +46,6 @@ public class Resume extends AppCompatActivity {
         distance.setText(distanceSum);
         quantity.setText(quantitySum);
         timeHour.setText(timeHourSum);
-//        timeMinute.setText(timeMinuteSum);
         payment.setText(paymentSum);
         quantityDays.setText(quatityDaysSum);
         reaisByDistance.setText(reaisByDistanceMid);

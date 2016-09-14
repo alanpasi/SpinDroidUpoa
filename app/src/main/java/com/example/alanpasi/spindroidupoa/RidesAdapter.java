@@ -23,6 +23,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 import static com.example.alanpasi.spindroidupoa.R.id.rvindice;
 
@@ -90,7 +91,24 @@ class RidesAdapter extends RecyclerView.Adapter<RidesAdapter.ViewHolder> {
         String indiceFinal = context.getString(R.string.reaisFormat, indice);
         holder.indice.setText(indiceFinal);
 
-        if (indice >= 12.0d) {
+        int distanceSum = 0;
+        int timeHourSum = 0;
+        int timeMinuteSum = 0;
+        double paymentSum = 0.0;
+        for (int i = 0; i < rideList.size(); i++ ){
+            distanceSum += Integer.parseInt(rideList.get(i).getDistance());
+            timeHourSum += Integer.parseInt(rideList.get(i).getTimeHour());
+            timeMinuteSum += Integer.parseInt(rideList.get(i).getTimeMinute());
+            paymentSum += Double.parseDouble(rideList.get(i).getPayment());
+        }
+        double totalTime = timeHourSum + (timeMinuteSum / 60.0);
+        double reaisByDistanceGlobal = paymentSum/distanceSum;
+        double reaisByHourGlobal = paymentSum/totalTime;
+        double indiceMid = reaisByDistanceGlobal * reaisByHourGlobal;
+
+        Log.d(TAG, "onBindViewHolder -> indiceMid ->" + indiceMid);
+
+        if (indice >= indiceMid) {
             holder.indiceimageview.setImageResource(R.drawable.ic_action_good);
             holder.indiceimageview.setColorFilter(Color.GREEN);
         } else {
@@ -118,7 +136,7 @@ class RidesAdapter extends RecyclerView.Adapter<RidesAdapter.ViewHolder> {
                 Log.d(TAG, "holder.itemView.setOnLongClickListener -> onLongClick -> Data ->" + rideList.get(itemPosition).getDate());
 
                 String dtStart = rideList.get(itemPosition).getDate();
-                SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
+                SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy", Locale.UK );
                 try {
                     Date date = format.parse(dtStart);
                     Log.d(TAG, "Data ->" + date);
