@@ -10,8 +10,10 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.DatePicker;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -21,6 +23,7 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
@@ -63,13 +66,18 @@ class RidesAdapter extends RecyclerView.Adapter<RidesAdapter.ViewHolder> {
         Log.d(TAG, "onBindViewHolder -> position ->" + position);
 
         String result = null;
+        String weekOfYear = null;
         try {
             result = getStringWeekDate(rideList.get(position).getDate());
+            weekOfYear = getStringWeekOfYear(rideList.get(position).getDate());
+            Log.d(TAG, "Week of year ->" + weekOfYear + " = " + result);
+
         } catch (ParseException e) {
             e.printStackTrace();
         }
-        holder.dataWeek.setText(result);
-        holder.data.setText(rideList.get(position).getDate());
+        holder.dateofWeek.setText(result);
+        holder.date.setText(rideList.get(position).getDate());
+        holder.weekofyear.setText(weekOfYear);
 
         double reaisByDistance = Double.parseDouble(rideList.get(position).getPayment())/Double.parseDouble(rideList.get(position).getDistance());
         Log.d(TAG, "reaisByDistance ->" + reaisByDistance);
@@ -181,7 +189,7 @@ class RidesAdapter extends RecyclerView.Adapter<RidesAdapter.ViewHolder> {
 
     public class ViewHolder extends RecyclerView.ViewHolder {
 
-        TextView dataWeek, reaisbydistance, reaisbyhour ,data, distance, payment, quantity, timeHour, timeMinute, indice;
+        TextView dateofWeek, weekofyear, reaisbydistance, reaisbyhour ,date, distance, payment, quantity, timeHour, timeMinute, indice;
 
         ImageView indiceimageview;
 
@@ -190,8 +198,9 @@ class RidesAdapter extends RecyclerView.Adapter<RidesAdapter.ViewHolder> {
 
             Log.d(TAG, "ViewHolder -> itemView ->" + itemView);
 
-            dataWeek = (TextView) itemView.findViewById(R.id.rvdatelabel);
-            data = (TextView) itemView.findViewById(R.id.rvdate);
+            dateofWeek = (TextView) itemView.findViewById(R.id.rvdatelabel);
+            date = (TextView) itemView.findViewById(R.id.rvdate);
+            weekofyear = (TextView) itemView.findViewById(R.id.rvweekofyear);
             reaisbydistance = (TextView) itemView.findViewById(R.id.rvreaisbydistance);
             reaisbyhour = (TextView) itemView.findViewById(R.id.rvreaisbyhour);
             distance = (TextView) itemView.findViewById(R.id.rvdistance);
@@ -207,11 +216,29 @@ class RidesAdapter extends RecyclerView.Adapter<RidesAdapter.ViewHolder> {
     private String getStringWeekDate(String dtStart) throws ParseException {
 
         SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
-        Date date = format.parse(dtStart);
-        Log.d(TAG, "Data ->" + date);
 
-        SimpleDateFormat dateformatWeek = new SimpleDateFormat("EEEE");
-        return dateformatWeek.format(date);
+        Date date = format.parse(dtStart);
+//        Log.d(TAG, "Data ->" + date);
+
+        SimpleDateFormat dateFormatWeek = new SimpleDateFormat("EEEE");
+        return dateFormatWeek.format(date);
+    }
+
+    private String getStringWeekOfYear(String dtStart) throws ParseException {
+        SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyy");
+        Date date = format.parse(dtStart);
+        Calendar calendar = Calendar.getInstance(Locale.UK);
+        calendar.setFirstDayOfWeek(Calendar.MONDAY);
+        format.setCalendar(calendar);
+
+//        Date date = format.parse(dtStart);
+
+        SimpleDateFormat dateFormatWeekOfYear = new SimpleDateFormat("w");
+        dateFormatWeekOfYear.setCalendar(calendar);
+
+
+
+        return dateFormatWeekOfYear.format(date);
     }
 
     private void removeCardItem(final View view, Ride infoData) {

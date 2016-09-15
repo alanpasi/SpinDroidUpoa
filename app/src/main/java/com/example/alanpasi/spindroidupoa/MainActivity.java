@@ -148,7 +148,8 @@ public class MainActivity extends AppCompatActivity {
             Intent intent = new Intent(getApplicationContext(), Performance.class);
 
             for (int i = 0; i < rideList.size(); i++ ){
-                graphData.add(rideList.get(i).getDate() + ";" + rideList.get(i).getPayment());
+//                graphData.add(rideList.get(i).getDate() + ";" + rideList.get(i).getPayment());
+                graphData.add(rideList.get(i).getPayment());
             }
 
             intent.putStringArrayListExtra("graphData", graphData);

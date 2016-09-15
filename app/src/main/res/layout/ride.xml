@@ -29,10 +29,18 @@
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
             android:layout_below="@id/rvdate"
-
-            android:layout_marginBottom="36dp"
             android:text="Dia da semana"
             android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/rvweekofyear"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_below="@id/rvdatelabel"
+            android:text="Semana do ano"
+            android:textSize="18sp"
+            android:textStyle="normal|bold" />
 
         <TextView
             android:id="@+id/rvreaisbydistance"
@@ -112,7 +120,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
-            android:layout_below="@id/rvdatelabel"
+            android:layout_below="@id/rvweekofyear"
             android:layout_marginBottom="1dp"
             android:layout_toStartOf="@+id/rvimageview"
             android:text="Indice"

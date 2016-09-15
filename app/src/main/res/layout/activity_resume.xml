@@ -101,6 +101,12 @@
         android:text="0"
         android:textSize="18sp" />
 
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="1dp"
+        android:background="@color/colorAccent"
+        android:layout_below="@id/lblQuantityDays"/>
+
     <TextView
         android:id="@+id/lblReaisByDistance"
         android:layout_width="wrap_content"
@@ -154,6 +160,12 @@
         android:layout_below="@+id/reaisByDay"
         android:text="0"
         android:textSize="18sp" />
+
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="1dp"
+        android:background="@color/colorAccent"
+        android:layout_below="@id/lblReaisByHour"/>
 
     <TextView
         android:id="@+id/lblIndice"
