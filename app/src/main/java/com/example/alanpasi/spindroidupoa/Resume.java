@@ -52,9 +52,5 @@ public class Resume extends AppCompatActivity {
         reaisByDay.setText(reaisByDayMid);
         reaisByHour.setText(reaisByHourMid);
         indice.setText(indiceMid);
-
-
-        Toast.makeText(this, reaisByDistanceMid, Toast.LENGTH_SHORT).show();
-
     }
 }

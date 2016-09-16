@@ -140,16 +140,24 @@ public class MainActivity extends AppCompatActivity {
         }
 
         if (id == R.id.action_performance) {
-            Toast.makeText(this, "Selecionado Desempenho", Toast.LENGTH_SHORT).show();
 
             ArrayList<String> graphData = new ArrayList<>();
 
-
             Intent intent = new Intent(getApplicationContext(), Performance.class);
 
+            double reaisByDistance;
+            double totalTime;
+            double reaisByHour;
+            double indice;
+            String data;
+
             for (int i = 0; i < rideList.size(); i++ ){
-//                graphData.add(rideList.get(i).getDate() + ";" + rideList.get(i).getPayment());
-                graphData.add(rideList.get(i).getPayment());
+                reaisByDistance = Double.parseDouble(rideList.get(i).getPayment()) / Double.parseDouble(rideList.get(i).getDistance());
+                totalTime = Double.parseDouble(rideList.get(i).getTimeHour()) + (Double.parseDouble(rideList.get(i).getTimeMinute()) / 60.0);
+                reaisByHour = Double.parseDouble(rideList.get(i).getPayment()) / totalTime;
+                indice = reaisByDistance * reaisByHour;
+                data = String.valueOf(indice);
+                graphData.add(data);
             }
 
             intent.putStringArrayListExtra("graphData", graphData);
