@@ -16,7 +16,6 @@ public class Performance extends AppCompatActivity {
 
     private BarGraphSeries<DataPoint> mSeriesPerformance;
     private LineGraphSeries<DataPoint> mSeriesPerformanceAverage;
-    private DataPoint dataPoint;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,29 +29,25 @@ public class Performance extends AppCompatActivity {
 
         int dias = performance_list.size();
         double performanceSum = 0.0;
-        DataPoint[] performance = new DataPoint[dias];
+
+        mSeriesPerformance = new BarGraphSeries<>();
         for (int x = 0; x < dias; x++) {
             double y = Double.parseDouble(performance_list.get(x));
-            dataPoint = new DataPoint(x+1, y);
-            performance[x] = dataPoint;
+            mSeriesPerformance.appendData(new DataPoint(x +1, y), true, dias);
             performanceSum += y;
         }
 
         double result = performanceSum/dias;
-        DataPoint[] performanceAverage = new DataPoint[2];
-        DataPoint dataPoint = new DataPoint(0, result);
-        performanceAverage[0] = dataPoint;
-        dataPoint = new DataPoint(dias + 1, result);
-        performanceAverage[1] = dataPoint;
 
-        mSeriesPerformanceAverage = new LineGraphSeries<>(performanceAverage);
+        mSeriesPerformanceAverage = new LineGraphSeries<>();
+        mSeriesPerformanceAverage.appendData(new DataPoint(0, result),true,2);
+        mSeriesPerformanceAverage.appendData(new DataPoint(dias + 1, result),true,2);
         mSeriesPerformanceAverage.setColor(Color.RED);
         mSeriesPerformanceAverage.setDrawDataPoints(true);
         mSeriesPerformanceAverage.setDataPointsRadius(10);
         mSeriesPerformanceAverage.setThickness(4);
         graph.addSeries(mSeriesPerformanceAverage);
 
-        mSeriesPerformance = new BarGraphSeries<>(performance);
         mSeriesPerformance.setDrawValuesOnTop(true);
         mSeriesPerformance.setValuesOnTopSize(25);
         mSeriesPerformance.setValuesOnTopColor(Color.BLACK);
@@ -63,7 +58,9 @@ public class Performance extends AppCompatActivity {
         graph.setTitleTextSize(50);
         graph.getGridLabelRenderer().setPadding(20);
         graph.getViewport().setMinX(0);
-        graph.getViewport().setMaxX(dias + 1);
+//        graph.getViewport().setMaxX(10);
         graph.getViewport().setXAxisBoundsManual(true);
+        graph.getViewport().setScrollable(true);
+        graph.getViewport().setScalableY(false);
     }
 }
