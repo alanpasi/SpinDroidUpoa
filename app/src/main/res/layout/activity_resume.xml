@@ -16,8 +16,9 @@
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:text="Distance"
-        android:textSize="18sp" />
+        android:text="Dados"
+        android:textSize="18sp"
+        android:textStyle="normal|bold" />
 
     <TextView
         android:id="@+id/distance"
@@ -29,30 +30,12 @@
         android:textSize="18sp" />
 
     <TextView
-        android:id="@+id/lblQuantity"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_below="@+id/distance"
-        android:text="Total de viagens"
-        android:textSize="18sp" />
-
-    <TextView
         android:id="@+id/quantity"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         android:layout_below="@+id/distance"
         android:text="0"
-        android:textSize="18sp" />
-
-    <TextView
-        android:id="@+id/lblTimeHour"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_below="@+id/lblQuantity"
-        android:text="Total de horas OnLine"
         android:textSize="18sp" />
 
     <TextView
@@ -66,30 +49,12 @@
 
 
     <TextView
-        android:id="@+id/lblPayment"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_below="@+id/lblTimeHour"
-        android:text="Total de ganhos"
-        android:textSize="18sp" />
-
-    <TextView
         android:id="@+id/payment"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         android:layout_below="@+id/timeHour"
         android:text="0"
-        android:textSize="18sp" />
-
-    <TextView
-        android:id="@+id/lblQuantityDays"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_below="@+id/lblPayment"
-        android:text="Total de dias"
         android:textSize="18sp" />
 
     <TextView
@@ -105,16 +70,17 @@
         android:layout_width="fill_parent"
         android:layout_height="1dp"
         android:background="@color/colorAccent"
-        android:layout_below="@id/lblQuantityDays"/>
+        android:layout_below="@id/quantityDays"/>
 
     <TextView
-        android:id="@+id/lblReaisByDistance"
+        android:id="@+id/lblMedias"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
-        android:layout_below="@+id/lblQuantityDays"
-        android:text="Reais por km"
-        android:textSize="18sp" />
+        android:layout_below="@+id/quantityDays"
+        android:text="Médias"
+        android:textSize="18sp"
+        android:textStyle="normal|bold" />
 
     <TextView
         android:id="@+id/reaisByDistance"
@@ -125,14 +91,7 @@
         android:text="0"
         android:textSize="18sp" />
 
-    <TextView
-        android:id="@+id/lblReaisByDay"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_below="@+id/lblReaisByDistance"
-        android:text="Reais por dia"
-        android:textSize="18sp" />
+
 
     <TextView
         android:id="@+id/reaisByDay"
@@ -143,14 +102,7 @@
         android:text="0"
         android:textSize="18sp" />
 
-    <TextView
-        android:id="@+id/lblReaisByHour"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_below="@+id/lblReaisByDay"
-        android:text="Reais por hora"
-        android:textSize="18sp" />
+
 
     <TextView
         android:id="@+id/reaisByHour"
@@ -165,14 +117,14 @@
         android:layout_width="fill_parent"
         android:layout_height="1dp"
         android:background="@color/colorAccent"
-        android:layout_below="@id/lblReaisByHour"/>
+        android:layout_below="@id/reaisByHour"/>
 
     <TextView
         android:id="@+id/lblIndice"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
-        android:layout_below="@+id/lblReaisByHour"
+        android:layout_below="@+id/reaisByHour"
         android:text="Desempenho"
         android:textSize="18sp"
         android:textStyle="normal|bold" />

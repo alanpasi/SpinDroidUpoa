@@ -99,8 +99,8 @@
             android:id="@+id/rvtimehour"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
             android:layout_below="@id/rvquantity"
+            android:layout_toLeftOf="@+id/rvtimeminute"
             android:text="Horas"
             android:textAlignment="textEnd"
             android:textSize="18sp" />
@@ -110,7 +110,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
-            android:layout_below="@id/rvtimehour"
+            android:layout_below="@id/rvquantity"
             android:text="Minutos"
             android:textAlignment="textEnd"
             android:textSize="18sp" />

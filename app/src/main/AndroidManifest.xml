@@ -23,7 +23,8 @@
             android:label="Resumo"/>
         <activity
             android:name=".Performance"
-            android:label="Desempenho"/>
+            android:label="Desempenho"
+            android:screenOrientation="landscape"/>
 
         <activity
             android:name=".AddRide"

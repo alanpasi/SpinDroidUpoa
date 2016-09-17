@@ -7,15 +7,15 @@ import android.widget.Toast;
 
 public class Resume extends AppCompatActivity {
 
-    TextView distance;
-    TextView quantity;
-    TextView timeHour;
-    TextView payment;
-    TextView quantityDays;
-    TextView reaisByDistance;
-    TextView reaisByDay;
-    TextView reaisByHour;
-    TextView indice;
+    private TextView distance;
+    private TextView quantity;
+    private TextView timeHour;
+    private TextView payment;
+    private TextView quantityDays;
+    private TextView reaisByDistance;
+    private TextView reaisByDay;
+    private TextView reaisByHour;
+    private TextView indice;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

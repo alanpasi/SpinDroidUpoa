@@ -92,8 +92,8 @@ class RidesAdapter extends RecyclerView.Adapter<RidesAdapter.ViewHolder> {
         holder.distance.setText(rideList.get(position).getDistance() + " km");
         holder.payment.setText("R$ " + rideList.get(position).getPayment());
         holder.quantity.setText(rideList.get(position).getQuantity() + " viagens");
-        holder.timeHour.setText(rideList.get(position).getTimeHour() + " h");
-        holder.timeMinute.setText(rideList.get(position).getTimeMinute() + " min");
+        holder.timeHour.setText(rideList.get(position).getTimeHour() + "h");
+        holder.timeMinute.setText(rideList.get(position).getTimeMinute() + "min");
 
         double indice = reaisByDistance * reaisByHour;
         String indiceFinal = context.getString(R.string.reaisFormat, indice);
