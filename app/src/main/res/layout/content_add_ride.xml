@@ -18,12 +18,12 @@
         android:id="@+id/rideDate"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="24sp"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:ems="10"
         android:hint="Data "
-        android:inputType="datetime" />
+        android:inputType="datetime"
+        android:textSize="24sp" />
 
     <EditText
         android:id="@+id/distance"
@@ -32,7 +32,7 @@
         android:layout_below="@+id/rideDate"
         android:layout_centerHorizontal="true"
         android:ems="10"
-        android:hint="Distância"
+        android:hint="Distância percorrida"
         android:inputType="numberDecimal" />
 
     <EditText
@@ -52,7 +52,7 @@
         android:layout_below="@+id/payment"
         android:layout_centerHorizontal="true"
         android:ems="10"
-        android:hint="Quantidade"
+        android:hint="Quantidade de viagens"
         android:inputType="number" />
 
     <EditText
@@ -74,5 +74,26 @@
         android:ems="10"
         android:hint="Total de minutos"
         android:inputType="number" />
+
+    <EditText
+        android:id="@+id/consumoCombustivel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/totalMinutes"
+        android:layout_centerHorizontal="true"
+        android:ems="10"
+        android:hint="Consumo de combustível"
+        android:inputType="numberDecimal" />
+
+    <EditText
+        android:id="@+id/precoCombustivel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/consumoCombustivel"
+        android:layout_centerHorizontal="true"
+        android:ems="10"
+        android:hint="Preço do combustível"
+        android:inputType="numberDecimal" />
+
 
 </LinearLayout>

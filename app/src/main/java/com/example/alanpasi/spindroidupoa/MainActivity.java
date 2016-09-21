@@ -11,6 +11,7 @@ import android.util.Log;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ProgressBar;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -28,11 +29,18 @@ public class MainActivity extends AppCompatActivity {
     private RecyclerView mRecyclerView;
     private List<Ride> rideList = new ArrayList<>();
     private RidesAdapter adapter;
+    private ProgressBar progressBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        progressBar = (ProgressBar) findViewById(R.id.progressBar);
+        progressBar.setVisibility(View.GONE);
+//        progressBar.setVisibility(View.VISIBLE);
+        Log.d(TAG, "progressBar.setVisibility(View.VISIBLE) -> ********************");
+
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -50,7 +58,9 @@ public class MainActivity extends AppCompatActivity {
         adapter = new RidesAdapter(this, rideList);
         mRecyclerView.setAdapter(adapter);
 
+
         loadDb();
+
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -60,6 +70,22 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
+
+    @Override
+    public void onActivityReenter(int resultCode, Intent data) {
+        super.onActivityReenter(resultCode, data);
+        Log.d(TAG, "progressBar.setVisibility(View.GONE) -> ********oonActivityReenter************");
+
+    }
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+//        progressBar.setVisibility(View.GONE);
+        Log.d(TAG, "progressBar.setVisibility(View.GONE) -> ********onRestart()************");
+
+    }
+
 
     private void addRide() {
         Intent intent = new Intent(this, AddRide.class);

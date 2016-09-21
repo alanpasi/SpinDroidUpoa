@@ -30,7 +30,7 @@
             android:layout_alignParentStart="true"
             android:layout_below="@id/rvdate"
             android:text="Dia da semana"
-            android:textSize="18sp" />
+            android:textSize="12sp" />
 
         <TextView
             android:id="@+id/rvweekofyear"
@@ -122,13 +122,22 @@
             android:layout_alignParentStart="true"
             android:layout_below="@id/rvweekofyear"
             android:layout_marginBottom="1dp"
-            android:layout_toStartOf="@+id/rvimageview"
             android:text="Indice"
             android:textAlignment="center"
             android:textSize="44sp" />
 
+        <ImageView
+            android:id="@+id/rvimageview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@id/rvindice"
+            android:layout_below="@id/rvpayment"
+            android:layout_toRightOf="@id/rvindice"
+            android:paddingLeft="12dp"
+            app:srcCompat="@drawable/ic_action_good" />
+
         <TextView
-            android:id="@+id/rvperformance"
+            android:id="@+id/lblperformance"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignEnd="@+id/rvindice"
@@ -136,15 +145,8 @@
             android:layout_below="@id/rvindice"
             android:text="Desempenho"
             android:textAlignment="center"
-            android:textSize="16sp" />
+            android:textSize="12sp" />
 
-        <ImageView
-            android:id="@+id/rvimageview"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/rvpayment"
-            android:layout_centerHorizontal="true"
-            app:srcCompat="@drawable/ic_action_good" />
 
     </RelativeLayout>
 </android.support.v7.widget.CardView>

@@ -28,6 +28,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
+import static com.example.alanpasi.spindroidupoa.R.id.progressBar;
 import static com.example.alanpasi.spindroidupoa.R.id.rvindice;
 
 /**
@@ -189,7 +190,8 @@ class RidesAdapter extends RecyclerView.Adapter<RidesAdapter.ViewHolder> {
 
     public class ViewHolder extends RecyclerView.ViewHolder {
 
-        TextView dateofWeek, weekofyear, reaisbydistance, reaisbyhour ,date, distance, payment, quantity, timeHour, timeMinute, indice;
+        TextView dateofWeek, weekofyear, reaisbydistance, reaisbyhour ,date,
+                distance, payment, quantity, timeHour, timeMinute, indice;
 
         ImageView indiceimageview;
 

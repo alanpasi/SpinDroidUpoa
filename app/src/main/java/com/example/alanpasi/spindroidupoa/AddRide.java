@@ -32,6 +32,8 @@ public class AddRide extends FragmentActivity {
     private EditText mQuantity;
     private EditText mTotalHours;
     private EditText mTotalMinutes;
+    private EditText mConsumoCombustivel;
+    private EditText mPrecoCombustivel;
 
     private DatabaseReference mRideRef;
 
@@ -55,6 +57,8 @@ public class AddRide extends FragmentActivity {
         mQuantity = (EditText) findViewById(R.id.quantity);
         mTotalHours = (EditText) findViewById(R.id.totalHours);
         mTotalMinutes = (EditText) findViewById(R.id.totalMinutes);
+        mConsumoCombustivel = (EditText) findViewById(R.id.consumoCombustivel);
+        mPrecoCombustivel = (EditText) findViewById(R.id.precoCombustivel);
 
         PickerDialogs pickerDialogs = new PickerDialogs();
         pickerDialogs.show(getSupportFragmentManager(), "date_picker");
@@ -150,10 +154,20 @@ public class AddRide extends FragmentActivity {
         String quantityValue = mQuantity.getText().toString();
         String totalHoursValue = mTotalHours.getText().toString();
         String totalMinutesValue = mTotalMinutes.getText().toString();
+        String consumoCombustivel = mConsumoCombustivel.getText().toString();
+        String precoCombustivel = mPrecoCombustivel.getText().toString();
 
         double pagamento = Double.parseDouble(paymentValue);
         String paymentFormated = getString(R.string.reaisFormat, pagamento);
         paymentFormated = paymentFormated.replace(',', '.');
+
+        double consumo = Double.parseDouble(consumoCombustivel);
+        String consumoFormated = getString(R.string.reaisFormat, consumo);
+        consumoFormated = consumoFormated.replace(',', '.');
+
+        double preco = Double.parseDouble(precoCombustivel);
+        String precoFormated = getString(R.string.reaisFormat, preco);
+        precoFormated = precoFormated.replace(',', '.');
 
         Log.d(TAG, "paymentFormated -> " + paymentFormated);
 
@@ -171,6 +185,8 @@ public class AddRide extends FragmentActivity {
             newPost.child("quantity").setValue(quantityValue);
             newPost.child("timeHour").setValue(totalHoursValue);
             newPost.child("timeMinute").setValue(totalMinutesValue);
+            newPost.child("gasConsumption").setValue(consumoFormated);
+            newPost.child("gasPrice").setValue(precoFormated);
 
             Snackbar snackbar = Snackbar.make(view, "Incluído", Snackbar.LENGTH_LONG);
             snackbar.show();
