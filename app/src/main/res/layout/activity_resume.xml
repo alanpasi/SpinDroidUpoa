@@ -21,21 +21,30 @@
         android:textStyle="normal|bold" />
 
     <TextView
-        android:id="@+id/distance"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentTop="true"
-        android:text="0"
-        android:textSize="18sp" />
-
-    <TextView
         android:id="@+id/quantity"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
-        android:layout_below="@+id/distance"
-        android:text="0"
+        android:layout_alignParentTop="true"
+        android:text="Viagens"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/payment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_below="@+id/quantity"
+        android:text="Pagamento"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/distance"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_below="@+id/payment"
+        android:text="Distância"
         android:textSize="18sp" />
 
     <TextView
@@ -43,18 +52,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
-        android:layout_below="@+id/quantity"
-        android:text="0"
-        android:textSize="18sp" />
-
-
-    <TextView
-        android:id="@+id/payment"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_below="@+id/timeHour"
-        android:text="0"
+        android:layout_below="@+id/distance"
+        android:text="Horas"
         android:textSize="18sp" />
 
     <TextView
@@ -62,15 +61,15 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
-        android:layout_below="@+id/payment"
-        android:text="0"
+        android:layout_below="@+id/timeHour"
+        android:text="Dias"
         android:textSize="18sp" />
 
     <View
         android:layout_width="fill_parent"
         android:layout_height="1dp"
-        android:background="@color/colorAccent"
-        android:layout_below="@id/quantityDays"/>
+        android:layout_below="@id/quantityDays"
+        android:background="@color/colorAccent" />
 
     <TextView
         android:id="@+id/lblMedias"
@@ -83,41 +82,37 @@
         android:textStyle="normal|bold" />
 
     <TextView
-        android:id="@+id/reaisByDistance"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_below="@+id/quantityDays"
-        android:text="0"
-        android:textSize="18sp" />
-
-
-
-    <TextView
         android:id="@+id/reaisByDay"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
-        android:layout_below="@+id/reaisByDistance"
-        android:text="0"
+        android:layout_below="@+id/quantityDays"
+        android:text="Reais/Dia"
         android:textSize="18sp" />
 
-
+    <TextView
+        android:id="@+id/reaisByDistance"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_below="@+id/reaisByDay"
+        android:text="Reais/Distância"
+        android:textSize="18sp" />
 
     <TextView
         android:id="@+id/reaisByHour"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
-        android:layout_below="@+id/reaisByDay"
-        android:text="0"
+        android:layout_below="@+id/reaisByDistance"
+        android:text="Reais/Hora"
         android:textSize="18sp" />
 
     <View
         android:layout_width="fill_parent"
         android:layout_height="1dp"
-        android:background="@color/colorAccent"
-        android:layout_below="@id/reaisByHour"/>
+        android:layout_below="@id/reaisByHour"
+        android:background="@color/colorAccent" />
 
     <TextView
         android:id="@+id/lblIndice"
@@ -135,7 +130,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         android:layout_below="@+id/reaisByHour"
-        android:text="0"
+        android:text="Índice"
         android:textSize="18sp"
         android:textStyle="normal|bold" />
 </RelativeLayout>

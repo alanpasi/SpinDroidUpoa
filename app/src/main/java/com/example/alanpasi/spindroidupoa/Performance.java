@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 
 import com.jjoe64.graphview.GraphView;
 import com.jjoe64.graphview.series.BarGraphSeries;
@@ -14,8 +15,11 @@ import java.util.ArrayList;
 
 public class Performance extends AppCompatActivity {
 
+    private static final String TAG = Performance.class.getSimpleName();
+
     private BarGraphSeries<DataPoint> mSeriesPerformance;
     private LineGraphSeries<DataPoint> mSeriesPerformanceAverage;
+    double finalIndiceAverage;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,24 +28,26 @@ public class Performance extends AppCompatActivity {
 
         GraphView graph = (GraphView) findViewById(R.id.graph_performance);
 
-        Intent intent = getIntent();
+        Intent intent = this.getIntent();
         ArrayList<String> performance_list = intent.getStringArrayListExtra("graphData");
 
+        finalIndiceAverage = (double) getIntent().getExtras().get("graphDataAverage");
+
+        Log.d(TAG, "finalIndiceAverage ->" + finalIndiceAverage);
+
         int dias = performance_list.size();
-        double performanceSum = 0.0;
+        double y;
 
         mSeriesPerformance = new BarGraphSeries<>();
         for (int x = 0; x < dias; x++) {
-            double y = Double.parseDouble(performance_list.get(x));
+            y = Double.parseDouble(performance_list.get(x));
             mSeriesPerformance.appendData(new DataPoint(x +1, y), true, dias);
-            performanceSum += y;
+            Log.d(TAG, "Performance Sum ->" + y);
         }
 
-        double result = performanceSum/dias;
-
         mSeriesPerformanceAverage = new LineGraphSeries<>();
-        mSeriesPerformanceAverage.appendData(new DataPoint(0, result),true,2);
-        mSeriesPerformanceAverage.appendData(new DataPoint(dias + 1, result),true,2);
+        mSeriesPerformanceAverage.appendData(new DataPoint(0, finalIndiceAverage),true,2);
+        mSeriesPerformanceAverage.appendData(new DataPoint(dias + 1, finalIndiceAverage),true,2);
         mSeriesPerformanceAverage.setColor(Color.RED);
         mSeriesPerformanceAverage.setDrawDataPoints(true);
         mSeriesPerformanceAverage.setDataPointsRadius(10);

@@ -113,7 +113,7 @@ public class MainActivity extends AppCompatActivity {
             int quantitySum = 0;
             int timeHourSum = 0;
             int timeMinuteSum = 0;
-            double paymentSum = 0.0;
+            double paymentSum = 0;
             for (int i = 0; i < rideList.size(); i++ ){
                 distanceSum += Integer.parseInt(rideList.get(i).getDistance());
                 quantitySum += Integer.parseInt(rideList.get(i).getQuantity());
@@ -121,6 +121,14 @@ public class MainActivity extends AppCompatActivity {
                 timeMinuteSum += Integer.parseInt(rideList.get(i).getTimeMinute());
                 paymentSum += Double.parseDouble(rideList.get(i).getPayment());
             }
+
+            Log.d(TAG, "rideList to Integer distanceSum -> " + distanceSum);
+            Log.d(TAG, "rideList to Integer quantitySum -> " + quantitySum);
+            Log.d(TAG, "rideList to Integer timeHourSum -> " + timeHourSum);
+            Log.d(TAG, "rideList to Integer timeMinuteSum -> " + timeMinuteSum);
+            double horas = timeHourSum + (timeMinuteSum/60.0);
+            Log.d(TAG, "rideList to Integer totalTimeSum -> " + horas);
+            Log.d(TAG, "rideList to Integer paymentSum -> " + paymentSum);
 
             String distance = String.valueOf(distanceSum) + " km";
             String quantity = String.valueOf(quantitySum) + " viagens";
@@ -164,21 +172,34 @@ public class MainActivity extends AppCompatActivity {
             Intent intent = new Intent(getApplicationContext(), Performance.class);
 
             double reaisByDistance;
+            double reaisByDistanceSum = 0.0;
             double totalTime;
             double reaisByHour;
+            double reaisByHourSum = 0.0;
             double indice;
+            double indiceAverage;
+
             String data;
 
             for (int i = 0; i < rideList.size(); i++ ){
                 reaisByDistance = Double.parseDouble(rideList.get(i).getPayment()) / Double.parseDouble(rideList.get(i).getDistance());
                 totalTime = Double.parseDouble(rideList.get(i).getTimeHour()) + (Double.parseDouble(rideList.get(i).getTimeMinute()) / 60.0);
                 reaisByHour = Double.parseDouble(rideList.get(i).getPayment()) / totalTime;
+                reaisByDistanceSum += reaisByDistance;
+                reaisByHourSum += reaisByHour;
                 indice = reaisByDistance * reaisByHour;
                 data = String.valueOf(indice);
                 graphData.add(data);
             }
 
+
+
+            indiceAverage = (reaisByDistanceSum / (double) rideList.size()) * (reaisByHourSum / (double) rideList.size());
+
             intent.putStringArrayListExtra("graphData", graphData);
+            intent.putExtra("graphDataAverage", indiceAverage);
+
+            Log.d(TAG, "intent.putExtra(graphDataAverage) -> " + indiceAverage);
 
             startActivity(intent);
         }

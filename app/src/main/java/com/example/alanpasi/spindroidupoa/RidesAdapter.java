@@ -100,24 +100,24 @@ class RidesAdapter extends RecyclerView.Adapter<RidesAdapter.ViewHolder> {
         String indiceFinal = context.getString(R.string.reaisFormat, indice);
         holder.indice.setText(indiceFinal);
 
-        int distanceSum = 0;
-        int timeHourSum = 0;
-        int timeMinuteSum = 0;
+        double distanceSum = 0;
+        double timeHourSum = 0;
+        double timeMinuteSum = 0;
         double paymentSum = 0.0;
         for (int i = 0; i < rideList.size(); i++ ){
-            distanceSum += Integer.parseInt(rideList.get(i).getDistance());
-            timeHourSum += Integer.parseInt(rideList.get(i).getTimeHour());
-            timeMinuteSum += Integer.parseInt(rideList.get(i).getTimeMinute());
+            distanceSum += Double.parseDouble(rideList.get(i).getDistance());
+            timeHourSum += Double.parseDouble(rideList.get(i).getTimeHour());
+            timeMinuteSum += Double.parseDouble(rideList.get(i).getTimeMinute());
             paymentSum += Double.parseDouble(rideList.get(i).getPayment());
         }
-        double totalTime = timeHourSum + (timeMinuteSum / 60.0);
+        double totalTime = timeHourSum + (timeMinuteSum / 60.0d);
         double reaisByDistanceGlobal = paymentSum/distanceSum;
         double reaisByHourGlobal = paymentSum/totalTime;
-        double indiceMid = reaisByDistanceGlobal * reaisByHourGlobal;
+        double indiceAverage = reaisByDistanceGlobal * reaisByHourGlobal;
 
-        Log.d(TAG, "onBindViewHolder -> indiceMid ->" + indiceMid);
+        Log.d(TAG, "onBindViewHolder -> indiceAverage ->" + indiceAverage);
 
-        if (indice >= indiceMid) {
+        if (indice >= indiceAverage) {
             holder.indiceimageview.setImageResource(R.drawable.ic_action_good);
             holder.indiceimageview.setColorFilter(Color.GREEN);
         } else {
