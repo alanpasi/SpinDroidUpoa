@@ -192,8 +192,6 @@ public class MainActivity extends AppCompatActivity {
                 graphData.add(data);
             }
 
-
-
             indiceAverage = (reaisByDistanceSum / (double) rideList.size()) * (reaisByHourSum / (double) rideList.size());
 
             intent.putStringArrayListExtra("graphData", graphData);
