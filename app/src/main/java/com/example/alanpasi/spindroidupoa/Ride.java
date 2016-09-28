@@ -10,6 +10,8 @@ public class Ride {
 
     private String date;
     private String distance;
+    private String gasConsumption;
+    private String gasPrice;
     private String payment;
     private String quantity;
     private String timeHour;
@@ -19,21 +21,15 @@ public class Ride {
     public Ride() {
     }
 
-    public Ride(String date, String distance, String payment, String quantity, String timeHour, String timeMinute, ImageView imageView) {
+    public Ride(String date, String distance, String gasConsumption, String gasPrice, String payment, String quantity, String timeHour, String timeMinute, ImageView imageView) {
         this.date = date;
         this.distance = distance;
         this.payment = payment;
+        this.gasConsumption = gasConsumption;
+        this.gasPrice = gasPrice;
         this.quantity = quantity;
         this.timeHour = timeHour;
         this.timeMinute = timeMinute;
-        this.imageView = imageView;
-    }
-
-    public ImageView getImageView() {
-        return imageView;
-    }
-
-    public void setImageView(ImageView imageView) {
         this.imageView = imageView;
     }
 
@@ -51,6 +47,22 @@ public class Ride {
 
     public void setDistance(String distance) {
         this.distance = distance;
+    }
+
+    public String getGasConsumption() {
+        return gasConsumption;
+    }
+
+    public void setGasConsumption(String gasConsumption) {
+        this.gasConsumption = gasConsumption;
+    }
+
+    public String getGasPrice() {
+        return gasPrice;
+    }
+
+    public void setGasPrice(String gasPrice) {
+        this.gasPrice = gasPrice;
     }
 
     public String getPayment() {
@@ -83,5 +95,13 @@ public class Ride {
 
     public void setTimeMinute(String timeMinute) {
         this.timeMinute = timeMinute;
+    }
+
+    public ImageView getImageView() {
+        return imageView;
+    }
+
+    public void setImageView(ImageView imageView) {
+        this.imageView = imageView;
     }
 }

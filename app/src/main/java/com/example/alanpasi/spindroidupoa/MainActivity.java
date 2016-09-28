@@ -218,13 +218,15 @@ public class MainActivity extends AppCompatActivity {
                     Ride day = daySnapshot.getValue(Ride.class);
                     rideList.add(new Ride(day.getDate(),
                             day.getDistance(),
+                            day.getGasConsumption(),
+                            day.getGasPrice(),
                             day.getPayment(),
                             day.getQuantity(),
                             day.getTimeHour(),
                             day.getTimeMinute(),
                             day.getImageView()));
 
-                    Log.d(TAG, "dataSnapshot.getChildren -> " + dataSnapshot.getChildren());
+                    Log.d(TAG, "dataSnapshot.getChildren -> " + day.getGasConsumption());
 
                 }
 

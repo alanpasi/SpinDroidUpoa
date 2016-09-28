@@ -115,6 +115,30 @@
             android:textAlignment="textEnd"
             android:textSize="18sp" />
 
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="1dp"
+            android:layout_below="@id/rvtimeminute"
+            android:background="@color/colorAccent" />
+
+        <TextView
+            android:id="@+id/rvcombustivel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/rvtimeminute"
+            android:layout_toLeftOf="@+id/rvcombustivelpercentual"
+            android:text="Combustível"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/rvcombustivelpercentual"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_below="@+id/rvtimeminute"
+            android:text="Percentual"
+            android:textSize="18sp" />
+
         <TextView
             android:id="@+id/rvindice"
             android:layout_width="wrap_content"

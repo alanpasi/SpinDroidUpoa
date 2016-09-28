@@ -29,6 +29,7 @@ import java.util.List;
 import java.util.Locale;
 
 import static com.example.alanpasi.spindroidupoa.R.id.progressBar;
+import static com.example.alanpasi.spindroidupoa.R.id.rvcombustivel;
 import static com.example.alanpasi.spindroidupoa.R.id.rvindice;
 
 /**
@@ -91,10 +92,24 @@ class RidesAdapter extends RecyclerView.Adapter<RidesAdapter.ViewHolder> {
         holder.reaisbyhour.setText(reaisByHourMid);
 
         holder.distance.setText(rideList.get(position).getDistance() + " km");
-        holder.payment.setText("R$ " + rideList.get(position).getPayment());
+
+        double paymentcalc = Double.parseDouble(rideList.get(position).getPayment());
+        String paymentString = "R$ " + context.getString(R.string.reaisFormat, paymentcalc);
+        holder.payment.setText(paymentString);
+
         holder.quantity.setText(rideList.get(position).getQuantity() + " viagens");
         holder.timeHour.setText(rideList.get(position).getTimeHour() + "h");
         holder.timeMinute.setText(rideList.get(position).getTimeMinute() + "min");
+
+        double combustivelcalc = (Double.parseDouble(rideList.get(position).getDistance()) /
+                Double.parseDouble(rideList.get(position).getGasConsumption())) *
+                        Double.parseDouble(rideList.get(position).getGasPrice());
+        String combustivelString = "Gasolina R$ " + context.getString(R.string.reaisFormat, combustivelcalc) + " (";
+        holder.combustivel.setText(combustivelString);
+
+        double percentualcalc = (combustivelcalc / Double.parseDouble(rideList.get(position).getPayment())) * 100.0;
+        String percentualString = context.getString(R.string.reaisFormat, percentualcalc) + "%)";
+        holder.percentual.setText(percentualString);
 
         double indice = reaisByDistance * reaisByHour;
         String indiceFinal = context.getString(R.string.reaisFormat, indice);
@@ -191,7 +206,7 @@ class RidesAdapter extends RecyclerView.Adapter<RidesAdapter.ViewHolder> {
     public class ViewHolder extends RecyclerView.ViewHolder {
 
         TextView dateofWeek, weekofyear, reaisbydistance, reaisbyhour ,date,
-                distance, payment, quantity, timeHour, timeMinute, indice;
+                distance, payment, quantity, timeHour, timeMinute, indice, combustivel, percentual;
 
         ImageView indiceimageview;
 
@@ -211,6 +226,8 @@ class RidesAdapter extends RecyclerView.Adapter<RidesAdapter.ViewHolder> {
             timeHour = (TextView) itemView.findViewById(R.id.rvtimehour);
             timeMinute = (TextView) itemView.findViewById(R.id.rvtimeminute);
             indice = (TextView) itemView.findViewById(rvindice);
+            combustivel = (TextView) itemView.findViewById(rvcombustivel);
+            percentual = (TextView) itemView.findViewById(R.id.rvcombustivelpercentual);
             indiceimageview = (ImageView) itemView.findViewById(R.id.rvimageview);
         }
     }
