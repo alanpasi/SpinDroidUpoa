@@ -21,6 +21,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.text.DecimalFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -63,6 +64,8 @@ class RidesAdapter extends RecyclerView.Adapter<RidesAdapter.ViewHolder> {
     @Override
     public void onBindViewHolder(final ViewHolder holder, int position) {
 
+        DecimalFormat formatter = new DecimalFormat("#,###.##");
+
         final int itemPosition = holder.getAdapterPosition();
 
         Log.d(TAG, "onBindViewHolder -> position ->" + position);
@@ -83,18 +86,18 @@ class RidesAdapter extends RecyclerView.Adapter<RidesAdapter.ViewHolder> {
 
         double reaisByDistance = Double.parseDouble(rideList.get(position).getPayment())/Double.parseDouble(rideList.get(position).getDistance());
         Log.d(TAG, "reaisByDistance ->" + reaisByDistance);
-        String reaisByDistanceMid = context.getString(R.string.reaisFormat, reaisByDistance) + " R$/km";
+        String reaisByDistanceMid = formatter.format(reaisByDistance) + " R$/km";
         holder.reaisbydistance.setText(reaisByDistanceMid);
 
         double decimalHours = Double.parseDouble(rideList.get(position).getTimeHour()) + (Double.parseDouble(rideList.get(position).getTimeMinute()) / 60d);
         double reaisByHour = Double.parseDouble(rideList.get(position).getPayment()) / decimalHours;
-        String reaisByHourMid = context.getString(R.string.reaisFormat, reaisByHour) + " R$/h";
+        String reaisByHourMid = formatter.format(reaisByHour) + " R$/h";
         holder.reaisbyhour.setText(reaisByHourMid);
 
         holder.distance.setText(rideList.get(position).getDistance() + " km");
 
         double paymentcalc = Double.parseDouble(rideList.get(position).getPayment());
-        String paymentString = "R$ " + context.getString(R.string.reaisFormat, paymentcalc);
+        String paymentString = "R$ " + formatter.format(paymentcalc);
         holder.payment.setText(paymentString);
 
         holder.quantity.setText(rideList.get(position).getQuantity() + " viagens");
@@ -104,15 +107,15 @@ class RidesAdapter extends RecyclerView.Adapter<RidesAdapter.ViewHolder> {
         double combustivelcalc = (Double.parseDouble(rideList.get(position).getDistance()) /
                 Double.parseDouble(rideList.get(position).getGasConsumption())) *
                         Double.parseDouble(rideList.get(position).getGasPrice());
-        String combustivelString = "Combustível R$ " + context.getString(R.string.reaisFormat, combustivelcalc) + " (";
+        String combustivelString = "Combustível R$ " + formatter.format(combustivelcalc) + " (";
         holder.combustivel.setText(combustivelString);
 
         double percentualcalc = (combustivelcalc / Double.parseDouble(rideList.get(position).getPayment())) * 100.0;
-        String percentualString = context.getString(R.string.reaisFormat, percentualcalc) + "%)";
+        String percentualString = formatter.format(percentualcalc) + "%)";
         holder.percentual.setText(percentualString);
 
         double indice = reaisByDistance * reaisByHour;
-        String indiceFinal = context.getString(R.string.reaisFormat, indice);
+        String indiceFinal = formatter.format(indice);
         holder.indice.setText(indiceFinal);
 
         double distanceSum = 0;

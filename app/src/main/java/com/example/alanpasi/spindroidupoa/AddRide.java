@@ -22,6 +22,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.text.DecimalFormat;
+
 public class AddRide extends FragmentActivity {
 
     private static final String TAG = AddRide.class.getSimpleName();
@@ -148,6 +150,8 @@ public class AddRide extends FragmentActivity {
 
     private void saveRide(View view) {
 
+        DecimalFormat formatter = new DecimalFormat("#,###.##");
+
         String rideDateValue = mRideDate.getText().toString().trim();
         String distanceValue = mDistance.getText().toString();
         String paymentValue = mPayment.getText().toString();
@@ -158,15 +162,15 @@ public class AddRide extends FragmentActivity {
         String precoCombustivel = mPrecoCombustivel.getText().toString();
 
         double pagamento = Double.parseDouble(paymentValue);
-        String paymentFormated = getString(R.string.reaisFormat, pagamento);
+        String paymentFormated = formatter.format(pagamento);
         paymentFormated = paymentFormated.replace(',', '.');
 
         double consumo = Double.parseDouble(consumoCombustivel);
-        String consumoFormated = getString(R.string.reaisFormat, consumo);
+        String consumoFormated = formatter.format(consumo);
         consumoFormated = consumoFormated.replace(',', '.');
 
         double preco = Double.parseDouble(precoCombustivel);
-        String precoFormated = getString(R.string.reaisFormat, preco);
+        String precoFormated = formatter.format(preco);
         precoFormated = precoFormated.replace(',', '.');
 
         Log.d(TAG, "paymentFormated -> " + paymentFormated);

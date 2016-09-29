@@ -19,6 +19,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -109,6 +110,8 @@ public class MainActivity extends AppCompatActivity {
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_resume) {
 
+            DecimalFormat formatter = new DecimalFormat("#,###.##");
+
             int distanceSum = 0;
             int quantitySum = 0;
             int timeHourSum = 0;
@@ -129,24 +132,24 @@ public class MainActivity extends AppCompatActivity {
             String distance = String.valueOf(distanceSum) + " km";
             String quantity = String.valueOf(quantitySum) + " viagens";
             double totalTime = timeHourSum + (timeMinuteSum / 60.0);
-            String timeHour = getString(R.string.reaisFormat, totalTime) + " h";
-            String payment = "R$ " + getString(R.string.reaisFormat, paymentSum);
+            String timeHour = formatter.format(totalTime) + " h";
+            String payment = "R$ " + formatter.format(paymentSum);
             String quantityDays = String.valueOf(rideList.size()) + " dias";
 
-            String gas = "R$" + getString(R.string.reaisFormat, gasSum);
-            String gasPercent = getString(R.string.reaisFormat, (gasSum / paymentSum) * 100.0) + "%";
-            String gasByDay = getString(R.string.reaisFormat, gasSum / rideList.size()) + " R$/dia";
-            String gasByDistance = getString(R.string.reaisFormat, gasSum / distanceSum) + " R$/km";
+            String gas = "R$ " + formatter.format(gasSum);
+            String gasPercent = formatter.format((gasSum / paymentSum) * 100.0) + "%";
+            String gasByDay = formatter.format(gasSum / rideList.size()) + " R$/dia";
+            String gasByDistance = formatter.format(gasSum / distanceSum) + " R$/km";
 
             double reaisByDistance = paymentSum/distanceSum;
-            String reaisByDistanceMid = getString(R.string.reaisFormat, reaisByDistance) + " R$/km";
+            String reaisByDistanceMid = formatter.format(reaisByDistance) + " R$/km";
             double reaisByDay = paymentSum/rideList.size();
-            String reaisByDaysMid = getString(R.string.reaisFormat, reaisByDay) + " R$/dia";
+            String reaisByDaysMid = formatter.format(reaisByDay) + " R$/dia";
             double reaisByHour = paymentSum/totalTime;
-            String reaisByHourMid = getString(R.string.reaisFormat, reaisByHour) + " R$/h";
+            String reaisByHourMid = formatter.format(reaisByHour) + " R$/h";
 
             double indice = reaisByDistance * reaisByHour;
-            String indiceMid = getString(R.string.reaisFormat, indice);
+            String indiceMid = formatter.format(indice);
 
             Intent intent = new Intent(getApplicationContext(), Resume.class);
 

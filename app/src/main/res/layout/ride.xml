@@ -145,7 +145,6 @@
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
             android:layout_below="@id/rvweekofyear"
-            android:layout_marginBottom="1dp"
             android:text="Indice"
             android:textAlignment="center"
             android:textSize="44sp" />
