@@ -111,6 +111,7 @@ public class MainActivity extends AppCompatActivity {
         if (id == R.id.action_resume) {
 
             DecimalFormat formatter = new DecimalFormat("#,###.##");
+            DecimalFormat noDecimalFormatter = new DecimalFormat("#,###");
 
             int distanceSum = 0;
             int quantitySum = 0;
@@ -129,7 +130,7 @@ public class MainActivity extends AppCompatActivity {
                         Double.parseDouble(rideList.get(i).getGasPrice());
             }
 
-            String distance = String.valueOf(distanceSum) + " km";
+            String distance = noDecimalFormatter.format(distanceSum) + " km";
             String quantity = String.valueOf(quantitySum) + " viagens";
             double totalTime = timeHourSum + (timeMinuteSum / 60.0);
             String timeHour = formatter.format(totalTime) + " h";
