@@ -114,21 +114,17 @@ public class MainActivity extends AppCompatActivity {
             int timeHourSum = 0;
             int timeMinuteSum = 0;
             double paymentSum = 0;
+            double gasSum = 0;
             for (int i = 0; i < rideList.size(); i++ ){
                 distanceSum += Integer.parseInt(rideList.get(i).getDistance());
                 quantitySum += Integer.parseInt(rideList.get(i).getQuantity());
                 timeHourSum += Integer.parseInt(rideList.get(i).getTimeHour());
                 timeMinuteSum += Integer.parseInt(rideList.get(i).getTimeMinute());
                 paymentSum += Double.parseDouble(rideList.get(i).getPayment());
+                gasSum += (Double.parseDouble(rideList.get(i).getDistance()) /
+                        Double.parseDouble(rideList.get(i).getGasConsumption())) *
+                        Double.parseDouble(rideList.get(i).getGasPrice());
             }
-
-            Log.d(TAG, "rideList to Integer distanceSum -> " + distanceSum);
-            Log.d(TAG, "rideList to Integer quantitySum -> " + quantitySum);
-            Log.d(TAG, "rideList to Integer timeHourSum -> " + timeHourSum);
-            Log.d(TAG, "rideList to Integer timeMinuteSum -> " + timeMinuteSum);
-            double horas = timeHourSum + (timeMinuteSum/60.0);
-            Log.d(TAG, "rideList to Integer totalTimeSum -> " + horas);
-            Log.d(TAG, "rideList to Integer paymentSum -> " + paymentSum);
 
             String distance = String.valueOf(distanceSum) + " km";
             String quantity = String.valueOf(quantitySum) + " viagens";
@@ -136,12 +132,19 @@ public class MainActivity extends AppCompatActivity {
             String timeHour = getString(R.string.reaisFormat, totalTime) + " h";
             String payment = "R$ " + getString(R.string.reaisFormat, paymentSum);
             String quantityDays = String.valueOf(rideList.size()) + " dias";
+
+            String gas = "R$" + getString(R.string.reaisFormat, gasSum);
+            String gasPercent = getString(R.string.reaisFormat, (gasSum / paymentSum) * 100.0) + "%";
+            String gasByDay = getString(R.string.reaisFormat, gasSum / rideList.size()) + " R$/dia";
+            String gasByDistance = getString(R.string.reaisFormat, gasSum / distanceSum) + " R$/km";
+
             double reaisByDistance = paymentSum/distanceSum;
             String reaisByDistanceMid = getString(R.string.reaisFormat, reaisByDistance) + " R$/km";
             double reaisByDay = paymentSum/rideList.size();
             String reaisByDaysMid = getString(R.string.reaisFormat, reaisByDay) + " R$/dia";
             double reaisByHour = paymentSum/totalTime;
             String reaisByHourMid = getString(R.string.reaisFormat, reaisByHour) + " R$/h";
+
             double indice = reaisByDistance * reaisByHour;
             String indiceMid = getString(R.string.reaisFormat, indice);
 
@@ -153,6 +156,10 @@ public class MainActivity extends AppCompatActivity {
             bundle.putString("timeHour", timeHour);
             bundle.putString("payment", payment);
             bundle.putString("quantityDays", quantityDays);
+            bundle.putString("gas", gas);
+            bundle.putString("gasPercent", gasPercent);
+            bundle.putString("gasByDay", gasByDay);
+            bundle.putString("gasByDistance", gasByDistance);
             bundle.putString("reaisByDistance", reaisByDistanceMid);
             bundle.putString("reaisByDay", reaisByDaysMid);
             bundle.putString("reaisByHour", reaisByHourMid);

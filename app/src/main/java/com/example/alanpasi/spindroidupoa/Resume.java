@@ -15,6 +15,10 @@ public class Resume extends AppCompatActivity {
     private TextView reaisByDay;
     private TextView reaisByHour;
     private TextView indice;
+    private TextView gas;
+    private TextView gasPercent;
+    private TextView gasByDistance;
+    private TextView gasByDay;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,30 +30,28 @@ public class Resume extends AppCompatActivity {
         timeHour = (TextView) findViewById(R.id.timeHour);
         payment = (TextView) findViewById(R.id.payment);
         quantityDays = (TextView) findViewById(R.id.quantityDays);
+        gas = (TextView) findViewById(R.id.gas);
+        gasPercent = (TextView) findViewById(R.id.gaspercent);
+        gasByDay = (TextView) findViewById(R.id.gasbyday);
+        gasByDistance = (TextView) findViewById(R.id.gasbydistance);
         reaisByDistance = (TextView) findViewById(R.id.reaisByDistance);
         reaisByDay = (TextView) findViewById(R.id.reaisByDay);
         reaisByHour = (TextView) findViewById(R.id.reaisByHour);
         indice = (TextView) findViewById(R.id.indice);
 
         Bundle bundle = getIntent().getExtras();
-        String distanceSum = bundle.getString("distance");
-        String quantitySum = bundle.getString("quantity");
-        String timeHourSum = bundle.getString("timeHour");
-        String paymentSum = bundle.getString("payment");
-        String quatityDaysSum = bundle.getString("quantityDays");
-        String reaisByDistanceMid = bundle.getString("reaisByDistance");
-        String reaisByDayMid = bundle.getString("reaisByDay");
-        String reaisByHourMid = bundle.getString("reaisByHour");
-        String indiceMid = bundle.getString("indice");
-
-        distance.setText(distanceSum);
-        quantity.setText(quantitySum);
-        timeHour.setText(timeHourSum);
-        payment.setText(paymentSum);
-        quantityDays.setText(quatityDaysSum);
-        reaisByDistance.setText(reaisByDistanceMid);
-        reaisByDay.setText(reaisByDayMid);
-        reaisByHour.setText(reaisByHourMid);
-        indice.setText(indiceMid);
+        distance.setText(bundle.getString("distance"));
+        quantity.setText(bundle.getString("quantity"));
+        timeHour.setText(bundle.getString("timeHour"));
+        payment.setText(bundle.getString("payment"));
+        quantityDays.setText(bundle.getString("quantityDays"));
+        gas.setText(bundle.getString("gas"));
+        gasPercent.setText(bundle.getString("gasPercent"));
+        gasByDay.setText(bundle.getString("gasByDay"));
+        gasByDistance.setText(bundle.getString("gasByDistance"));
+        reaisByDistance.setText(bundle.getString("reaisByDistance"));
+        reaisByDay.setText(bundle.getString("reaisByDay"));
+        reaisByHour.setText(bundle.getString("reaisByHour"));
+        indice.setText(bundle.getString("indice"));
     }
 }

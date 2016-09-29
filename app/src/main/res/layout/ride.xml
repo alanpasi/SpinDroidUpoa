@@ -128,7 +128,7 @@
             android:layout_below="@+id/rvtimeminute"
             android:layout_toLeftOf="@+id/rvcombustivelpercentual"
             android:text="Combustível"
-            android:textSize="18sp" />
+            android:textSize="16sp" />
 
         <TextView
             android:id="@+id/rvcombustivelpercentual"
@@ -137,7 +137,7 @@
             android:layout_alignParentEnd="true"
             android:layout_below="@+id/rvtimeminute"
             android:text="Percentual"
-            android:textSize="18sp" />
+            android:textSize="16sp" />
 
         <TextView
             android:id="@+id/rvindice"
@@ -154,7 +154,7 @@
             android:id="@+id/rvimageview"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignBottom="@id/rvindice"
+            android:layout_alignTop="@id/rvindice"
             android:layout_below="@id/rvpayment"
             android:layout_toRightOf="@id/rvindice"
             android:paddingLeft="12dp"

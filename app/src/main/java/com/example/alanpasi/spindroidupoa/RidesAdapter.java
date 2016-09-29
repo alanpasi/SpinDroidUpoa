@@ -104,7 +104,7 @@ class RidesAdapter extends RecyclerView.Adapter<RidesAdapter.ViewHolder> {
         double combustivelcalc = (Double.parseDouble(rideList.get(position).getDistance()) /
                 Double.parseDouble(rideList.get(position).getGasConsumption())) *
                         Double.parseDouble(rideList.get(position).getGasPrice());
-        String combustivelString = "Gasolina R$ " + context.getString(R.string.reaisFormat, combustivelcalc) + " (";
+        String combustivelString = "Combustível R$ " + context.getString(R.string.reaisFormat, combustivelcalc) + " (";
         holder.combustivel.setText(combustivelString);
 
         double percentualcalc = (combustivelcalc / Double.parseDouble(rideList.get(position).getPayment())) * 100.0;
