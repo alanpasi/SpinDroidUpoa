@@ -29,7 +29,6 @@ import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
-import static com.example.alanpasi.spindroidupoa.R.id.progressBar;
 import static com.example.alanpasi.spindroidupoa.R.id.rvcombustivel;
 import static com.example.alanpasi.spindroidupoa.R.id.rvindice;
 

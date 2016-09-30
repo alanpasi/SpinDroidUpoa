@@ -170,6 +170,6 @@
             android:textAlignment="center"
             android:textSize="12sp" />
 
-
     </RelativeLayout>
+
 </android.support.v7.widget.CardView>

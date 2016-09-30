@@ -1,8 +1,12 @@
 package com.example.alanpasi.spindroidupoa;
 
+import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -30,21 +34,23 @@ public class MainActivity extends AppCompatActivity {
     private RecyclerView mRecyclerView;
     private List<Ride> rideList = new ArrayList<>();
     private RidesAdapter adapter;
-    private ProgressBar progressBar;
+    private ProgressDialog progressDialog;
+    private ActionBarDrawerToggle toggle;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        progressBar = (ProgressBar) findViewById(R.id.progressBar);
-        progressBar.setVisibility(View.GONE);
-//        progressBar.setVisibility(View.VISIBLE);
-        Log.d(TAG, "progressBar.setVisibility(View.VISIBLE) -> ********************");
-
+        DrawerLayout drawerLayout = (DrawerLayout) findViewById(R.id.drawerlayout);
+        toggle = new ActionBarDrawerToggle(this, drawerLayout, R.string.open, R.string.close);
+        drawerLayout.addDrawerListener(toggle);
+        toggle.syncState();
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         mRecyclerView = (RecyclerView) findViewById(R.id.recyclerView);
 
@@ -59,9 +65,11 @@ public class MainActivity extends AppCompatActivity {
         adapter = new RidesAdapter(this, rideList);
         mRecyclerView.setAdapter(adapter);
 
+        progressDialog = new ProgressDialog(this, ProgressDialog.STYLE_SPINNER);
+        progressDialog.setMessage("Carregando dados...");
+        progressDialog.show();
 
         loadDb();
-
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -75,16 +83,11 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public void onActivityReenter(int resultCode, Intent data) {
         super.onActivityReenter(resultCode, data);
-        Log.d(TAG, "progressBar.setVisibility(View.GONE) -> ********oonActivityReenter************");
-
     }
 
     @Override
     protected void onRestart() {
         super.onRestart();
-//        progressBar.setVisibility(View.GONE);
-        Log.d(TAG, "progressBar.setVisibility(View.GONE) -> ********onRestart()************");
-
     }
 
 
@@ -242,11 +245,11 @@ public class MainActivity extends AppCompatActivity {
                 }
 
                 mRecyclerView.setAdapter(adapter);
+                progressDialog.cancel();
             }
 
             @Override
             public void onCancelled(DatabaseError databaseError) {
-
             }
         });
     }
