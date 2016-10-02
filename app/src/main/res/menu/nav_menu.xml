@@ -4,10 +4,16 @@
     <item android:id="@+id/nav_menu_1"
         android:title="Resumo"/>
 
-    <item android:id="@+id/nav_menu_2"
-        android:title="Gráfico de Desempenho"/>
+    <item android:title="Graficos">
 
-    <item android:id="@+id/nav_menu_3"
-        android:title="Option 3"/>
+        <menu>
+            <item android:id="@+id/nav_menu_2"
+                android:title="Gráfico de Desempenho"/>
+
+            <item android:id="@+id/nav_menu_3"
+                android:title="Gráfico de consumo"/>
+        </menu>
+
+    </item>
 
 </menu>
