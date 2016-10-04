@@ -13,12 +13,14 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.view.MenuItem;
 import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Timer;
 
 import static com.example.alanpasi.spindroidupoa.Tools.getResume;
 import static com.example.alanpasi.spindroidupoa.Tools.showPerformanceGraph;
@@ -27,7 +29,6 @@ import static com.example.alanpasi.spindroidupoa.ToolsDb.loadDb;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
-//    private DatabaseReference mRideRef;
     private RecyclerView mRecyclerView;
     private List<Ride> rideList = new ArrayList<>();
     private RidesAdapter adapter;
@@ -39,11 +40,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        progressDialog = new ProgressDialog(this, ProgressDialog.STYLE_SPINNER);
-        progressDialog.setTitle("SpinDroidUpoa");
-        progressDialog.setMessage("Carregando dados...");
-        progressDialog.show();
 
         Toolbar mToolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(mToolbar);
@@ -69,9 +65,24 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         adapter = new RidesAdapter(this, rideList);
         mRecyclerView.setAdapter(adapter);
 
-        loadDb(rideList, mRecyclerView, adapter);
+        Log.i("progressDialog", "show()************************");
 
-        progressDialog.dismiss();
+        final ProgressDialog progressDialog = new ProgressDialog(this);
+        progressDialog.setTitle("SpinDroidUpoa");
+        progressDialog.setMessage("Carregando dados");
+        progressDialog.show();
+
+        Thread mThread = new Thread() {
+            @Override
+            public void run() {
+                loadDb(rideList, mRecyclerView, adapter);
+                progressDialog.dismiss();
+            }
+        };
+        mThread.start();
+
+        if(progressDialog.isShowing())
+            progressDialog.dismiss();
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -85,15 +96,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private void addRide() {
         Intent intent = new Intent(this, AddRide.class);
         startActivity(intent);
-    }
-    @Override
-    public void onActivityReenter(int resultCode, Intent data) {
-        super.onActivityReenter(resultCode, data);
-    }
-
-    @Override
-    protected void onRestart() {
-        super.onRestart();
     }
 
     @Override
@@ -114,5 +116,15 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         if (dl.isDrawerOpen(GravityCompat.START))
             dl.closeDrawer(GravityCompat.START);
         return false;
+    }
+
+    @Override
+    public void onActivityReenter(int resultCode, Intent data) {
+        super.onActivityReenter(resultCode, data);
+    }
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
     }
 }

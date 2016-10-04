@@ -16,8 +16,9 @@ import java.util.List;
 
 public class ToolsDb {
 
-    public static void loadDb(final List<Ride> rideList,
-                              final RecyclerView mRecyclerView, final RidesAdapter adapter) {
+    public static boolean loadDb(final List<Ride> rideList,
+                              final RecyclerView mRecyclerView,
+                              final RidesAdapter adapter) {
 
         DatabaseReference mRideRef = FirebaseDatabase.getInstance().getReference().child("Ride");
 
@@ -44,5 +45,6 @@ public class ToolsDb {
             public void onCancelled(DatabaseError databaseError) {
             }
         });
+        return true;
     }
 }

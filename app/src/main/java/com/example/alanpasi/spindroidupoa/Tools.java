@@ -38,25 +38,26 @@ public class Tools {
                     Double.parseDouble(rideList.get(i).getGasPrice());
         }
 
+//      Dados - Resumo
         String distance = noDecimalFormatter.format(distanceSum) + " km";
         String quantity = String.valueOf(quantitySum) + " viagens";
         double totalTime = timeHourSum + (timeMinuteSum / 60.0);
         String timeHour = formatter.format(totalTime) + " h";
         String payment = "R$ " + formatter.format(paymentSum);
         String quantityDays = String.valueOf(rideList.size()) + " dias";
-
+//      Combustível - Resumo
         String gas = "R$ " + formatter.format(gasSum);
         String gasPercent = formatter.format((gasSum / paymentSum) * 100.0) + "%";
         String gasByDay = formatter.format(gasSum / rideList.size()) + " R$/dia";
         String gasByDistance = formatter.format(gasSum / distanceSum) + " R$/km";
-
-        double reaisByDistance = paymentSum/distanceSum;
+//      Médias - Resumo
+        double reaisByDistance = paymentSum/ distanceSum;
         String reaisByDistanceMid = formatter.format(reaisByDistance) + " R$/km";
-        double reaisByDay = paymentSum/rideList.size();
+        double reaisByDay = paymentSum/ rideList.size();
         String reaisByDaysMid = formatter.format(reaisByDay) + " R$/dia";
         double reaisByHour = paymentSum/totalTime;
         String reaisByHourMid = formatter.format(reaisByHour) + " R$/h";
-
+//      Desempenho - Resumo
         double indice = reaisByDistance * reaisByHour;
         String indiceMid = formatter.format(indice);
 
