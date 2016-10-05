@@ -63,7 +63,7 @@ class RidesAdapter extends RecyclerView.Adapter<RidesAdapter.ViewHolder> {
     @Override
     public void onBindViewHolder(final ViewHolder holder, int position) {
 
-        DecimalFormat formatter = new DecimalFormat("#,###.##");
+        DecimalFormat formatter = new DecimalFormat("#,##0.00");
 
         final int itemPosition = holder.getAdapterPosition();
 

@@ -8,10 +8,10 @@
 
         <menu>
             <item android:id="@+id/nav_menu_2"
-                android:title="Gráfico de Desempenho"/>
+                android:title="Desempenho (R$/km x R$/h)"/>
 
             <item android:id="@+id/nav_menu_3"
-                android:title="Gráfico de consumo"/>
+                android:title="Ganho/Combustível (R$/km)"/>
         </menu>
 
     </item>

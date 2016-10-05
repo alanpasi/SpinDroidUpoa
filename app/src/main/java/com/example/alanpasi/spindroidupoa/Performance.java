@@ -64,7 +64,6 @@ public class Performance extends AppCompatActivity {
         graph.setTitleTextSize(50);
         graph.getGridLabelRenderer().setPadding(20);
         graph.getViewport().setMinX(0);
-//        graph.getViewport().setMaxX(10);
         graph.getViewport().setXAxisBoundsManual(true);
         graph.getViewport().setScrollable(true);
         graph.getViewport().setScalableY(false);

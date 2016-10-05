@@ -16,13 +16,12 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 import android.view.MenuItem;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Timer;
 
 import static com.example.alanpasi.spindroidupoa.Tools.getResume;
+import static com.example.alanpasi.spindroidupoa.Tools.showGanhoCombustivelGraph;
 import static com.example.alanpasi.spindroidupoa.Tools.showPerformanceGraph;
 import static com.example.alanpasi.spindroidupoa.ToolsDb.loadDb;
 
@@ -67,7 +66,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         Log.i("progressDialog", "show()************************");
 
-        final ProgressDialog progressDialog = new ProgressDialog(this);
+        progressDialog = new ProgressDialog(this);
         progressDialog.setTitle("SpinDroidUpoa");
         progressDialog.setMessage("Carregando dados");
         progressDialog.show();
@@ -109,7 +108,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 showPerformanceGraph(this, rideList);
                 break;
             case R.id.nav_menu_3:
-                Toast.makeText(this, "Ainda não implementado", Toast.LENGTH_LONG).show();
+                showGanhoCombustivelGraph(this,rideList);
                 break;
         }
         DrawerLayout dl = (DrawerLayout) findViewById(R.id.drawerlayout);

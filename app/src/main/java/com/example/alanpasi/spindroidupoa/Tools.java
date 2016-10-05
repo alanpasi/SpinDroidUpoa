@@ -3,7 +3,6 @@ package com.example.alanpasi.spindroidupoa;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.widget.Toast;
 
 import java.text.DecimalFormat;
 import java.util.ArrayList;
@@ -18,7 +17,7 @@ public class Tools {
 
     public static boolean getResume(Context context, List<Ride> rideList) {
 
-        DecimalFormat formatter = new DecimalFormat("#,###.##");
+        DecimalFormat formatter = new DecimalFormat("#,##0.00");
         DecimalFormat noDecimalFormatter = new DecimalFormat("#,###");
 
         int distanceSum = 0;
@@ -51,7 +50,7 @@ public class Tools {
         String gasByDay = formatter.format(gasSum / rideList.size()) + " R$/dia";
         String gasByDistance = formatter.format(gasSum / distanceSum) + " R$/km";
 //      Médias - Resumo
-        double reaisByDistance = paymentSum/ distanceSum;
+        double reaisByDistance = paymentSum/ (double) distanceSum;
         String reaisByDistanceMid = formatter.format(reaisByDistance) + " R$/km";
         double reaisByDay = paymentSum/ rideList.size();
         String reaisByDaysMid = formatter.format(reaisByDay) + " R$/dia";
@@ -87,8 +86,6 @@ public class Tools {
 
     public static void showPerformanceGraph(Context context, List<Ride> rideList) {
 
-        Toast.makeText(context, "showPerformanceGraph", Toast.LENGTH_SHORT).show();
-
         ArrayList<String> graphData = new ArrayList<>();
 
         Intent intent = new Intent(context, Performance.class);
@@ -118,6 +115,39 @@ public class Tools {
 
         intent.putStringArrayListExtra("graphData", graphData);
         intent.putExtra("graphDataAverage", indiceAverage);
+
+        context.startActivity(intent);
+    }
+
+    public static void showGanhoCombustivelGraph (Context context, List<Ride> rideList) {
+
+        DecimalFormat formatter = new DecimalFormat("#,##0.00");
+
+        ArrayList<String> graphGanhoKm = new ArrayList<>();
+        ArrayList<String> graphCombustivelKm = new ArrayList<>();
+
+        Intent intent = new Intent(context, GraphGanhoCombustivel.class);
+
+        double reaisByDistance;
+        double gasByDistance;
+
+        String data_a, data_b;
+
+        for (int i = 0; i < rideList.size(); i++ ){
+            reaisByDistance = Double.parseDouble(rideList.get(i).getPayment()) /
+                    Double.parseDouble(rideList.get(i).getDistance());
+            gasByDistance = ((Double.parseDouble(rideList.get(i).getDistance()) /
+                    Double.parseDouble(rideList.get(i).getGasConsumption())) *
+                    Double.parseDouble(rideList.get(i).getGasPrice()))/
+                    Double.parseDouble(rideList.get(i).getDistance());
+            data_a = String.valueOf(reaisByDistance);
+            data_b = String.valueOf(gasByDistance);
+            graphGanhoKm.add(data_a);
+            graphCombustivelKm.add(data_b);
+        }
+
+        intent.putStringArrayListExtra("graphGanhoKm", graphGanhoKm);
+        intent.putStringArrayListExtra("graphCombustivelKm", graphCombustivelKm);
 
         context.startActivity(intent);
     }
