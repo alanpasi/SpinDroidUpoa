@@ -19,6 +19,7 @@ public class GraphGanhoCombustivel extends AppCompatActivity {
 
     private BarGraphSeries<DataPoint> mSeriesGanhoPorKm;
     private LineGraphSeries<DataPoint> mSeriesCombustivelPorKm;
+    private LineGraphSeries<DataPoint> mSeriesPercent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,14 +36,18 @@ public class GraphGanhoCombustivel extends AppCompatActivity {
         int dias = ganhokm_list.size();
         double y;
         double w;
+        double z;
 
         mSeriesGanhoPorKm = new BarGraphSeries<>();
         mSeriesCombustivelPorKm = new LineGraphSeries<>();
+        mSeriesPercent = new LineGraphSeries<>();
         for (int x = 0; x < dias; x++) {
             y = Double.parseDouble(ganhokm_list.get(x));
             w = Double.parseDouble(combustivelkm_list.get(x));
+            z = (w / y) * 100.0;
             mSeriesGanhoPorKm.appendData(new DataPoint(x + 1, y), true, dias);
             mSeriesCombustivelPorKm.appendData(new DataPoint(x + 1, w), true, dias);
+            mSeriesPercent.appendData(new DataPoint(x + 1, z), true, dias);
         }
 
         graphView.getGridLabelRenderer().setHumanRounding(true);
@@ -62,21 +67,31 @@ public class GraphGanhoCombustivel extends AppCompatActivity {
         graphView.addSeries(mSeriesGanhoPorKm);
 
         mSeriesCombustivelPorKm.setDrawDataPoints(true);
-        mSeriesCombustivelPorKm.setColor(Color.RED);
+        mSeriesCombustivelPorKm.setColor(Color.GREEN);
         mSeriesCombustivelPorKm.setDataPointsRadius(10);
         mSeriesCombustivelPorKm.setThickness(2);
         mSeriesCombustivelPorKm.setTitle("Combustível (R$/km)");
         graphView.addSeries(mSeriesCombustivelPorKm);
+
+        graphView.getSecondScale().addSeries(mSeriesPercent);
+        graphView.getSecondScale().setMinY(0);
+        graphView.getSecondScale().setMaxY(100);
+        mSeriesPercent.setTitle("Percentual");
+        mSeriesPercent.setColor(Color.RED);
+        graphView.getGridLabelRenderer().setVerticalLabelsSecondScaleColor(Color.RED);
+
 
         graphView.setTitle("R$/km" + " - " + dias + " dias");
         graphView.setTitleTextSize(50);
         graphView.getGridLabelRenderer().setPadding(20);
         graphView.getLegendRenderer().setVisible(true);
         graphView.getLegendRenderer().setAlign(LegendRenderer.LegendAlign.TOP);
-        graphView.getViewport().setMinX(0);
-        graphView.getViewport().setMinX(10);
-        graphView.getViewport().setXAxisBoundsManual(false);
-        graphView.getViewport().setScrollable(false);
+//        graphView.getViewport().setMinX(10);
+//        graphView.getViewport().setMinX(15);
+//        graphView.getViewport().setMinY(10);
+//        graphView.getViewport().setMaxY(10);
+        graphView.getViewport().setXAxisBoundsManual(true);
+        graphView.getViewport().setScrollable(true);
         graphView.getViewport().setScalableY(false);
 
     }

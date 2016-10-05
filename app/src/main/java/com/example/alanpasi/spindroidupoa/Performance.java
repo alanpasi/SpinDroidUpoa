@@ -6,11 +6,13 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 
+import com.jjoe64.graphview.DefaultLabelFormatter;
 import com.jjoe64.graphview.GraphView;
 import com.jjoe64.graphview.series.BarGraphSeries;
 import com.jjoe64.graphview.series.DataPoint;
 import com.jjoe64.graphview.series.LineGraphSeries;
 
+import java.text.NumberFormat;
 import java.util.ArrayList;
 
 public class Performance extends AppCompatActivity {
@@ -45,6 +47,14 @@ public class Performance extends AppCompatActivity {
             Log.d(TAG, "Performance Sum ->" + y);
         }
 
+        graph.getGridLabelRenderer().setHumanRounding(true);
+
+        NumberFormat nf = NumberFormat.getInstance();
+//        nf.setMinimumFractionDigits(1);
+        nf.setMaximumFractionDigits(2);
+        nf.setMinimumIntegerDigits(1);
+        graph.getGridLabelRenderer().setLabelFormatter(new DefaultLabelFormatter(nf, nf));
+
         mSeriesPerformanceAverage = new LineGraphSeries<>();
         mSeriesPerformanceAverage.appendData(new DataPoint(0, finalIndiceAverage),true,2);
         mSeriesPerformanceAverage.appendData(new DataPoint(dias + 1, finalIndiceAverage),true,2);
@@ -55,14 +65,14 @@ public class Performance extends AppCompatActivity {
         graph.addSeries(mSeriesPerformanceAverage);
 
         mSeriesPerformance.setDrawValuesOnTop(true);
-        mSeriesPerformance.setValuesOnTopSize(25);
+        mSeriesPerformance.setValuesOnTopSize(18);
         mSeriesPerformance.setValuesOnTopColor(Color.BLACK);
         mSeriesPerformance.setSpacing(5);
         graph.addSeries(mSeriesPerformance);
 
         graph.setTitle("Índice de Desempenho" + " - " + dias + " dias");
         graph.setTitleTextSize(50);
-        graph.getGridLabelRenderer().setPadding(20);
+        graph.getGridLabelRenderer().setPadding(10);
         graph.getViewport().setMinX(0);
         graph.getViewport().setXAxisBoundsManual(true);
         graph.getViewport().setScrollable(true);

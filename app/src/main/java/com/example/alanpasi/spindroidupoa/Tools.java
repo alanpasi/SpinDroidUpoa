@@ -121,8 +121,6 @@ public class Tools {
 
     public static void showGanhoCombustivelGraph (Context context, List<Ride> rideList) {
 
-        DecimalFormat formatter = new DecimalFormat("#,##0.00");
-
         ArrayList<String> graphGanhoKm = new ArrayList<>();
         ArrayList<String> graphCombustivelKm = new ArrayList<>();
 
