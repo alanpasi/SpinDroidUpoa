@@ -134,10 +134,8 @@ public class Tools {
         for (int i = 0; i < rideList.size(); i++ ){
             reaisByDistance = Double.parseDouble(rideList.get(i).getPayment()) /
                     Double.parseDouble(rideList.get(i).getDistance());
-            gasByDistance = ((Double.parseDouble(rideList.get(i).getDistance()) /
-                    Double.parseDouble(rideList.get(i).getGasConsumption())) *
-                    Double.parseDouble(rideList.get(i).getGasPrice()))/
-                    Double.parseDouble(rideList.get(i).getDistance());
+//            gasByDistance = GasPrice / GasConsumption
+            gasByDistance = Double.parseDouble(rideList.get(i).getGasPrice()) / Double.parseDouble(rideList.get(i).getGasConsumption());
             data_a = String.valueOf(reaisByDistance);
             data_b = String.valueOf(gasByDistance);
             graphGanhoKm.add(data_a);

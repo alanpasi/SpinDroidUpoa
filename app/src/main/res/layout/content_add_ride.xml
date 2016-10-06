@@ -20,80 +20,122 @@
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:ems="10"
         android:hint="Data "
         android:inputType="datetime"
-        android:textSize="24sp" />
+        android:textSize="18sp"
+        android:textStyle="normal|bold" />
 
-    <EditText
-        android:id="@+id/distance"
+    <android.support.design.widget.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/rideDate"
-        android:layout_centerHorizontal="true"
-        android:ems="10"
-        android:hint="Distância percorrida"
-        android:inputType="numberDecimal" />
+        android:padding="1dp"
+        app:hintTextAppearance="@style/TextAppearance.AppCompat.Medium">
+        <android.support.design.widget.TextInputEditText
+            android:id="@+id/distance"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/rideDate"
+            android:layout_centerHorizontal="true"
+            android:hint="Distância percorrida"
+            android:textSize="14sp"
+            android:inputType="numberDecimal" />
+    </android.support.design.widget.TextInputLayout>
 
-    <EditText
-        android:id="@+id/payment"
+    <android.support.design.widget.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/distance"
-        android:layout_centerHorizontal="true"
-        android:ems="10"
-        android:hint="Valor total"
-        android:inputType="numberDecimal" />
+        android:padding="1dp"
+        app:hintTextAppearance="@style/TextAppearance.AppCompat.Medium">
+        <android.support.design.widget.TextInputEditText
+            android:id="@+id/payment"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/distance"
+            android:layout_centerHorizontal="true"
+            android:hint="Valor total"
+            android:textSize="14sp"
+            android:inputType="numberDecimal" />
+    </android.support.design.widget.TextInputLayout>
 
-    <EditText
-        android:id="@+id/quantity"
+    <android.support.design.widget.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/payment"
-        android:layout_centerHorizontal="true"
-        android:ems="10"
-        android:hint="Quantidade de viagens"
-        android:inputType="number" />
+        android:padding="1dp"
+        app:hintTextAppearance="@style/TextAppearance.AppCompat.Medium">
 
-    <EditText
+        <android.support.design.widget.TextInputEditText
+            android:id="@+id/quantity"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/payment"
+            android:layout_centerHorizontal="true"
+            android:hint="Quantidade de viagens"
+            android:textSize="14sp"
+            android:inputType="number" />
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="1dp"
+        app:hintTextAppearance="@style/TextAppearance.AppCompat.Medium">
+    <android.support.design.widget.TextInputEditText
         android:id="@+id/totalHours"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/quantity"
         android:layout_centerHorizontal="true"
-        android:ems="10"
         android:hint="Total de horas "
+        android:textSize="14sp"
         android:inputType="number" />
+    </android.support.design.widget.TextInputLayout>
 
-    <EditText
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="1dp"
+        app:hintTextAppearance="@style/TextAppearance.AppCompat.Medium">
+    <android.support.design.widget.TextInputEditText
         android:id="@+id/totalMinutes"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/totalHours"
         android:layout_centerHorizontal="true"
-        android:ems="10"
         android:hint="Total de minutos"
+        android:textSize="14sp"
         android:inputType="number" />
+    </android.support.design.widget.TextInputLayout>
 
-    <EditText
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="1dp"
+        app:hintTextAppearance="@style/TextAppearance.AppCompat.Medium">
+    <android.support.design.widget.TextInputEditText
         android:id="@+id/consumoCombustivel"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/totalMinutes"
         android:layout_centerHorizontal="true"
-        android:ems="10"
         android:hint="Consumo de combustível"
+        android:textSize="14sp"
         android:inputType="numberDecimal" />
+    </android.support.design.widget.TextInputLayout>
 
-    <EditText
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="1dp"
+        app:hintTextAppearance="@style/TextAppearance.AppCompat.Medium">
+    <android.support.design.widget.TextInputEditText
         android:id="@+id/precoCombustivel"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/consumoCombustivel"
         android:layout_centerHorizontal="true"
-        android:ems="10"
         android:hint="Preço do combustível"
+        android:textSize="14sp"
         android:inputType="numberDecimal" />
-
+    </android.support.design.widget.TextInputLayout>
 
 </LinearLayout>

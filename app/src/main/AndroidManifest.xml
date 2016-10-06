@@ -29,7 +29,8 @@
         <activity
             android:name=".AddRide"
             android:label="@string/title_activity_add_ride"
-            android:theme="@style/AppTheme.NoActionBar">
+            android:theme="@style/AppTheme.NoActionBar"
+            android:screenOrientation="portrait">
         </activity>
 
         <!--

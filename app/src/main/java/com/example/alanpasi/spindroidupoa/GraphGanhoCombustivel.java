@@ -58,27 +58,31 @@ public class GraphGanhoCombustivel extends AppCompatActivity {
         nf.setMinimumIntegerDigits(1);
         graphView.getGridLabelRenderer().setLabelFormatter(new DefaultLabelFormatter(nf, nf));
 
+        graphView.getSecondScale().addSeries(mSeriesPercent);
+        graphView.getSecondScale().setMinY(0);
+        graphView.getSecondScale().setMaxY(100);
+        mSeriesPercent.setTitle("Combustível/Ganho (%)");
+        mSeriesPercent.setColor(Color.RED);
+        mSeriesPercent.setDrawDataPoints(true);
+        mSeriesPercent.setDataPointsRadius(5);
+        graphView.getGridLabelRenderer().setVerticalLabelsSecondScaleColor(Color.RED);
+
         mSeriesGanhoPorKm.setDrawValuesOnTop(true);
         mSeriesGanhoPorKm.setValuesOnTopSize(20);
         mSeriesGanhoPorKm.setValuesOnTopColor(Color.BLACK);
         mSeriesGanhoPorKm.setSpacing(10);
-        mSeriesGanhoPorKm.setColor(Color.BLUE);
+//        mSeriesGanhoPorKm.setColor(Color.BLUE);
         mSeriesGanhoPorKm.setTitle("Ganho (R$/km)");
         graphView.addSeries(mSeriesGanhoPorKm);
 
         mSeriesCombustivelPorKm.setDrawDataPoints(true);
-        mSeriesCombustivelPorKm.setColor(Color.GREEN);
-        mSeriesCombustivelPorKm.setDataPointsRadius(10);
+        mSeriesCombustivelPorKm.setColor(Color.YELLOW);
+        mSeriesCombustivelPorKm.setDataPointsRadius(8);
         mSeriesCombustivelPorKm.setThickness(2);
         mSeriesCombustivelPorKm.setTitle("Combustível (R$/km)");
         graphView.addSeries(mSeriesCombustivelPorKm);
 
-        graphView.getSecondScale().addSeries(mSeriesPercent);
-        graphView.getSecondScale().setMinY(0);
-        graphView.getSecondScale().setMaxY(100);
-        mSeriesPercent.setTitle("Percentual");
-        mSeriesPercent.setColor(Color.RED);
-        graphView.getGridLabelRenderer().setVerticalLabelsSecondScaleColor(Color.RED);
+
 
 
         graphView.setTitle("R$/km" + " - " + dias + " dias");
