@@ -4,8 +4,12 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.TextView;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+
 public class Resume extends AppCompatActivity {
 
+    private TextView dateNow;
     private TextView distance;
     private TextView quantity;
     private TextView timeHour;
@@ -26,6 +30,11 @@ public class Resume extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_resume);
 
+        Calendar calendar = Calendar.getInstance();
+        SimpleDateFormat dateFormat = new SimpleDateFormat("EEEE dd/MMMM/yyy HH:mm");
+        String formattedDate = "Em " + dateFormat.format(calendar.getTime());
+
+        dateNow = (TextView) findViewById(R.id.dateNow);
         distance = (TextView) findViewById(R.id.distance);
         quantity = (TextView) findViewById(R.id.quantity);
         timeHour = (TextView) findViewById(R.id.timeHour);
@@ -41,6 +50,7 @@ public class Resume extends AppCompatActivity {
         distannceByDay = (TextView) findViewById(R.id.distanceByDay);
         indice = (TextView) findViewById(R.id.indice);
 
+        dateNow.setText(formattedDate);
         Bundle bundle = getIntent().getExtras();
         distance.setText(bundle.getString("distance"));
         quantity.setText(bundle.getString("quantity"));
