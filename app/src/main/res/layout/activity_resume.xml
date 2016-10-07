@@ -44,7 +44,7 @@
                 android:layout_alignParentEnd="true"
                 android:layout_below="@+id/line_dados"
                 android:text="Viagens"
-                android:textSize="18sp" />
+                android:textSize="16sp" />
 
             <TextView
                 android:id="@+id/payment"
@@ -53,7 +53,7 @@
                 android:layout_alignParentEnd="true"
                 android:layout_below="@+id/quantity"
                 android:text="Pagamento"
-                android:textSize="18sp" />
+                android:textSize="16sp" />
 
             <TextView
                 android:id="@+id/distance"
@@ -62,7 +62,7 @@
                 android:layout_alignParentEnd="true"
                 android:layout_below="@+id/payment"
                 android:text="Distância"
-                android:textSize="18sp" />
+                android:textSize="16sp" />
 
             <TextView
                 android:id="@+id/timeHour"
@@ -71,7 +71,7 @@
                 android:layout_alignParentEnd="true"
                 android:layout_below="@+id/distance"
                 android:text="Horas"
-                android:textSize="18sp" />
+                android:textSize="16sp" />
 
             <TextView
                 android:id="@+id/quantityDays"
@@ -80,7 +80,7 @@
                 android:layout_alignParentEnd="true"
                 android:layout_below="@+id/timeHour"
                 android:text="Dias"
-                android:textSize="18sp" />
+                android:textSize="16sp" />
 
 
             <TextView
@@ -107,16 +107,25 @@
                 android:layout_alignParentEnd="true"
                 android:layout_below="@id/line_medias"
                 android:text="Reais/Dia"
-                android:textSize="18sp" />
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/distanceByDay"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_below="@+id/reaisByDay"
+                android:text="Distância/Dia"
+                android:textSize="16sp" />
 
             <TextView
                 android:id="@+id/reaisByDistance"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
-                android:layout_below="@+id/reaisByDay"
+                android:layout_below="@+id/distanceByDay"
                 android:text="Reais/Distância"
-                android:textSize="18sp" />
+                android:textSize="16sp" />
 
             <TextView
                 android:id="@+id/reaisByHour"
@@ -125,7 +134,9 @@
                 android:layout_alignParentEnd="true"
                 android:layout_below="@+id/reaisByDistance"
                 android:text="Reais/Hora"
-                android:textSize="18sp" />
+                android:textSize="16sp" />
+
+
 
             <TextView
                 android:id="@+id/lblgas"
@@ -151,7 +162,7 @@
                 android:layout_alignParentEnd="true"
                 android:layout_below="@id/line_gas"
                 android:text="Combustível"
-                android:textSize="18sp" />
+                android:textSize="16sp" />
 
             <TextView
                 android:id="@+id/gaspercent"
@@ -160,7 +171,7 @@
                 android:layout_alignParentEnd="true"
                 android:layout_below="@id/gas"
                 android:text="Percentual"
-                android:textSize="18sp" />
+                android:textSize="16sp" />
 
             <TextView
                 android:id="@+id/gasbyday"
@@ -169,7 +180,7 @@
                 android:layout_alignParentEnd="true"
                 android:layout_below="@id/gaspercent"
                 android:text="Reais/Dia"
-                android:textSize="18sp" />
+                android:textSize="16sp" />
 
             <TextView
                 android:id="@+id/gasbydistance"
@@ -178,7 +189,7 @@
                 android:layout_alignParentEnd="true"
                 android:layout_below="@id/gasbyday"
                 android:text="Reais/Distância"
-                android:textSize="18sp" />
+                android:textSize="16sp" />
 
             <TextView
                 android:id="@+id/lblIndice"
@@ -204,7 +215,7 @@
                 android:layout_alignParentEnd="true"
                 android:layout_below="@id/line_indice"
                 android:text="Índice"
-                android:textSize="18sp" />
+                android:textSize="16sp" />
 
         </RelativeLayout>
 

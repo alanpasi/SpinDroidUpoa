@@ -56,6 +56,8 @@ public class Tools {
         String reaisByDaysMid = formatter.format(reaisByDay) + " R$/dia";
         double reaisByHour = paymentSum/totalTime;
         String reaisByHourMid = formatter.format(reaisByHour) + " R$/h";
+        double distanceByDay = distanceSum / (double) rideList.size();
+        String distanceByDayMid = formatter.format(distanceByDay) + " km/dia";
 //      Desempenho - Resumo
         double indice = reaisByDistance * reaisByHour;
         String indiceMid = formatter.format(indice);
@@ -75,6 +77,7 @@ public class Tools {
         bundle.putString("reaisByDistance", reaisByDistanceMid);
         bundle.putString("reaisByDay", reaisByDaysMid);
         bundle.putString("reaisByHour", reaisByHourMid);
+        bundle.putString("distanceByDay", distanceByDayMid);
         bundle.putString("indice", indiceMid);
 
         intent.putExtras(bundle);

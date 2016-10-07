@@ -16,6 +16,7 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 import android.view.MenuItem;
+import android.widget.LinearLayout;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -43,6 +44,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         Toolbar mToolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(mToolbar);
 
+        LinearLayout linearLayout = (LinearLayout) findViewById(R.id.ll_progressbar);
+        linearLayout.setVisibility(View.GONE);
+
         DrawerLayout drawerLayout = (DrawerLayout) findViewById(R.id.drawerlayout);
         toggle = new ActionBarDrawerToggle(this, drawerLayout, mToolbar, R.string.open, R.string.close);
         drawerLayout.addDrawerListener(toggle);
@@ -64,24 +68,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         adapter = new RidesAdapter(this, rideList);
         mRecyclerView.setAdapter(adapter);
 
-        Log.i("progressDialog", "show()************************");
+        loadDb(rideList, mRecyclerView, adapter);
 
-        progressDialog = new ProgressDialog(this);
-        progressDialog.setTitle("SpinDroidUpoa");
-        progressDialog.setMessage("Carregando dados");
-        progressDialog.show();
-
-        Thread mThread = new Thread() {
-            @Override
-            public void run() {
-                loadDb(rideList, mRecyclerView, adapter);
-                progressDialog.dismiss();
-            }
-        };
-        mThread.start();
-
-        if(progressDialog.isShowing())
-            progressDialog.dismiss();
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {

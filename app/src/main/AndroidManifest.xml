@@ -30,8 +30,11 @@
             android:name=".AddRide"
             android:label="@string/title_activity_add_ride"
             android:theme="@style/AppTheme.NoActionBar"
-            android:screenOrientation="portrait">
-        </activity>
+            android:screenOrientation="portrait" />
+
+        <activity android:name=".GraphGanhoCombustivel"
+            android:label="R$/km"
+            android:screenOrientation="landscape" />
 
         <!--
      ATTENTION: This was auto-generated to add Google Play services to your project for
@@ -41,10 +44,6 @@
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
 
-        <activity android:name=".GraphGanhoCombustivel"
-            android:label="R$/km"
-            android:screenOrientation="landscape">
-        </activity>
     </application>
 
 </manifest>

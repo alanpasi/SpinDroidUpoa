@@ -14,6 +14,7 @@ public class Resume extends AppCompatActivity {
     private TextView reaisByDistance;
     private TextView reaisByDay;
     private TextView reaisByHour;
+    private TextView distannceByDay;
     private TextView indice;
     private TextView gas;
     private TextView gasPercent;
@@ -37,6 +38,7 @@ public class Resume extends AppCompatActivity {
         reaisByDistance = (TextView) findViewById(R.id.reaisByDistance);
         reaisByDay = (TextView) findViewById(R.id.reaisByDay);
         reaisByHour = (TextView) findViewById(R.id.reaisByHour);
+        distannceByDay = (TextView) findViewById(R.id.distanceByDay);
         indice = (TextView) findViewById(R.id.indice);
 
         Bundle bundle = getIntent().getExtras();
@@ -52,6 +54,7 @@ public class Resume extends AppCompatActivity {
         reaisByDistance.setText(bundle.getString("reaisByDistance"));
         reaisByDay.setText(bundle.getString("reaisByDay"));
         reaisByHour.setText(bundle.getString("reaisByHour"));
+        distannceByDay.setText(bundle.getString("distanceByDay"));
         indice.setText(bundle.getString("indice"));
     }
 }
