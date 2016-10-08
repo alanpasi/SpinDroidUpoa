@@ -6,6 +6,7 @@ import android.widget.TextView;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Locale;
 
 public class Resume extends AppCompatActivity {
 
@@ -15,6 +16,7 @@ public class Resume extends AppCompatActivity {
     private TextView timeHour;
     private TextView payment;
     private TextView quantityDays;
+    private TextView quantityByDay;
     private TextView reaisByDistance;
     private TextView reaisByDay;
     private TextView reaisByHour;
@@ -31,8 +33,8 @@ public class Resume extends AppCompatActivity {
         setContentView(R.layout.activity_resume);
 
         Calendar calendar = Calendar.getInstance();
-        SimpleDateFormat dateFormat = new SimpleDateFormat("EEEE dd/MMMM/yyy HH:mm");
-        String formattedDate = "Em " + dateFormat.format(calendar.getTime());
+        SimpleDateFormat dateFormat = new SimpleDateFormat("EEEE dd/MMMM/yyy HH:mm", Locale.getDefault());
+        String formattedDate = dateFormat.format(calendar.getTime());
 
         dateNow = (TextView) findViewById(R.id.dateNow);
         distance = (TextView) findViewById(R.id.distance);
@@ -40,14 +42,18 @@ public class Resume extends AppCompatActivity {
         timeHour = (TextView) findViewById(R.id.timeHour);
         payment = (TextView) findViewById(R.id.payment);
         quantityDays = (TextView) findViewById(R.id.quantityDays);
+
+        quantityByDay = (TextView) findViewById(R.id.quantityByDay);
+        reaisByDay = (TextView) findViewById(R.id.reaisByDay);
+        distannceByDay = (TextView) findViewById(R.id.distanceByDay);
+        reaisByDistance = (TextView) findViewById(R.id.reaisByDistance);
+        reaisByHour = (TextView) findViewById(R.id.reaisByHour);
+
         gas = (TextView) findViewById(R.id.gas);
         gasPercent = (TextView) findViewById(R.id.gaspercent);
         gasByDay = (TextView) findViewById(R.id.gasbyday);
         gasByDistance = (TextView) findViewById(R.id.gasbydistance);
-        reaisByDistance = (TextView) findViewById(R.id.reaisByDistance);
-        reaisByDay = (TextView) findViewById(R.id.reaisByDay);
-        reaisByHour = (TextView) findViewById(R.id.reaisByHour);
-        distannceByDay = (TextView) findViewById(R.id.distanceByDay);
+
         indice = (TextView) findViewById(R.id.indice);
 
         dateNow.setText(formattedDate);
@@ -57,14 +63,20 @@ public class Resume extends AppCompatActivity {
         timeHour.setText(bundle.getString("timeHour"));
         payment.setText(bundle.getString("payment"));
         quantityDays.setText(bundle.getString("quantityDays"));
-        gas.setText(bundle.getString("gas"));
-        gasPercent.setText(bundle.getString("gasPercent"));
-        gasByDay.setText(bundle.getString("gasByDay"));
-        gasByDistance.setText(bundle.getString("gasByDistance"));
+
+        quantityByDay.setText(bundle.getString("quantityByDay"));
         reaisByDistance.setText(bundle.getString("reaisByDistance"));
         reaisByDay.setText(bundle.getString("reaisByDay"));
         reaisByHour.setText(bundle.getString("reaisByHour"));
         distannceByDay.setText(bundle.getString("distanceByDay"));
+
+        gas.setText(bundle.getString("gas"));
+        gasPercent.setText(bundle.getString("gasPercent"));
+        gasByDay.setText(bundle.getString("gasByDay"));
+        gasByDistance.setText(bundle.getString("gasByDistance"));
+
+
+
         indice.setText(bundle.getString("indice"));
     }
 }

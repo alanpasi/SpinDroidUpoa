@@ -110,11 +110,20 @@
                 android:background="@color/colorAccent" />
 
             <TextView
-                android:id="@+id/reaisByDay"
+                android:id="@+id/quantityByDay"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
                 android:layout_below="@id/line_medias"
+                android:text="Viagens/Dia"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/reaisByDay"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_below="@id/quantityByDay"
                 android:text="Reais/Dia"
                 android:textSize="16sp" />
 

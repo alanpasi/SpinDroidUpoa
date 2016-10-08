@@ -19,6 +19,7 @@ public class Tools {
 
         DecimalFormat formatter = new DecimalFormat("#,##0.00");
         DecimalFormat noDecimalFormatter = new DecimalFormat("#,###");
+        DecimalFormat oneDecimalFormatter = new DecimalFormat("#.0");
 
         int distanceSum = 0;
         int quantitySum = 0;
@@ -50,6 +51,8 @@ public class Tools {
         String gasByDay = formatter.format(gasSum / rideList.size()) + " R$/dia";
         String gasByDistance = formatter.format(gasSum / distanceSum) + " R$/km";
 //      Médias - Resumo
+        double quantityByDay = quantitySum / rideList.size();
+        String quantityByDayAverage = oneDecimalFormatter.format(quantityByDay) + " viagens/dia";
         double reaisByDistance = paymentSum/ (double) distanceSum;
         String reaisByDistanceMid = formatter.format(reaisByDistance) + " R$/km";
         double reaisByDay = paymentSum/ rideList.size();
@@ -75,6 +78,7 @@ public class Tools {
         bundle.putString("gasByDay", gasByDay);
         bundle.putString("gasByDistance", gasByDistance);
         bundle.putString("reaisByDistance", reaisByDistanceMid);
+        bundle.putString("quantityByDay", quantityByDayAverage);
         bundle.putString("reaisByDay", reaisByDaysMid);
         bundle.putString("reaisByHour", reaisByHourMid);
         bundle.putString("distanceByDay", distanceByDayMid);

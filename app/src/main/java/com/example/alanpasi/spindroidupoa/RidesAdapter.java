@@ -162,7 +162,7 @@ class RidesAdapter extends RecyclerView.Adapter<RidesAdapter.ViewHolder> {
                 Log.d(TAG, "holder.itemView.setOnLongClickListener -> onLongClick -> Data ->" + rideList.get(itemPosition).getDate());
 
                 String dtStart = rideList.get(itemPosition).getDate();
-                SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy", Locale.UK );
+                SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault());
                 try {
                     Date date = format.parse(dtStart);
                     Log.d(TAG, "Data ->" + date);
@@ -236,28 +236,23 @@ class RidesAdapter extends RecyclerView.Adapter<RidesAdapter.ViewHolder> {
 
     private String getStringWeekDate(String dtStart) throws ParseException {
 
-        SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
+        SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault());
 
         Date date = format.parse(dtStart);
-//        Log.d(TAG, "Data ->" + date);
 
-        SimpleDateFormat dateFormatWeek = new SimpleDateFormat("EEEE");
+        SimpleDateFormat dateFormatWeek = new SimpleDateFormat("EEEE", Locale.getDefault());
         return dateFormatWeek.format(date);
     }
 
     private String getStringWeekOfYear(String dtStart) throws ParseException {
-        SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyy");
+        SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyy", Locale.getDefault());
         Date date = format.parse(dtStart);
         Calendar calendar = Calendar.getInstance(Locale.UK);
         calendar.setFirstDayOfWeek(Calendar.MONDAY);
         format.setCalendar(calendar);
 
-//        Date date = format.parse(dtStart);
-
-        SimpleDateFormat dateFormatWeekOfYear = new SimpleDateFormat("w");
+        SimpleDateFormat dateFormatWeekOfYear = new SimpleDateFormat("w", Locale.getDefault());
         dateFormatWeekOfYear.setCalendar(calendar);
-
-
 
         return dateFormatWeekOfYear.format(date);
     }
