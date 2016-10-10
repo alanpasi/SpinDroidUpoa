@@ -25,9 +25,11 @@ public class Tools {
         int quantitySum = 0;
         int timeHourSum = 0;
         int timeMinuteSum = 0;
+        int days = rideList.size();
         double paymentSum = 0;
         double gasSum = 0;
-        for (int i = 0; i < rideList.size(); i++ ){
+
+        for (int i = 0; i < days; i++ ){
             distanceSum += Integer.parseInt(rideList.get(i).getDistance());
             quantitySum += Integer.parseInt(rideList.get(i).getQuantity());
             timeHourSum += Integer.parseInt(rideList.get(i).getTimeHour());
@@ -44,23 +46,25 @@ public class Tools {
         double totalTime = timeHourSum + (timeMinuteSum / 60.0);
         String timeHour = formatter.format(totalTime) + " h";
         String payment = "R$ " + formatter.format(paymentSum);
-        String quantityDays = String.valueOf(rideList.size()) + " dias";
+        String quantityDays = String.valueOf(days) + " dias";
 //      Combustível - Resumo
         String gas = "R$ " + formatter.format(gasSum);
         String gasPercent = formatter.format((gasSum / paymentSum) * 100.0) + "%";
-        String gasByDay = formatter.format(gasSum / rideList.size()) + " R$/dia";
+        String gasByDay = formatter.format(gasSum / days) + " R$/dia";
         String gasByDistance = formatter.format(gasSum / distanceSum) + " R$/km";
 //      Médias - Resumo
-        double quantityByDay = quantitySum / rideList.size();
+        double quantityByDay = quantitySum / days;
         String quantityByDayAverage = oneDecimalFormatter.format(quantityByDay) + " viagens/dia";
         double reaisByDistance = paymentSum/ (double) distanceSum;
         String reaisByDistanceMid = formatter.format(reaisByDistance) + " R$/km";
-        double reaisByDay = paymentSum/ rideList.size();
+        double reaisByDay = paymentSum/ days;
         String reaisByDaysMid = formatter.format(reaisByDay) + " R$/dia";
         double reaisByHour = paymentSum/totalTime;
         String reaisByHourMid = formatter.format(reaisByHour) + " R$/h";
-        double distanceByDay = distanceSum / (double) rideList.size();
+        double distanceByDay = distanceSum / (double) days;
         String distanceByDayMid = formatter.format(distanceByDay) + " km/dia";
+        double hoursByDay = totalTime / (double) days;
+        String hourByDayAverage = oneDecimalFormatter.format(hoursByDay) + " h/dia";
 //      Desempenho - Resumo
         double indice = reaisByDistance * reaisByHour;
         String indiceMid = formatter.format(indice);
@@ -82,6 +86,7 @@ public class Tools {
         bundle.putString("reaisByDay", reaisByDaysMid);
         bundle.putString("reaisByHour", reaisByHourMid);
         bundle.putString("distanceByDay", distanceByDayMid);
+        bundle.putString("hoursByDay", hourByDayAverage);
         bundle.putString("indice", indiceMid);
 
         intent.putExtras(bundle);

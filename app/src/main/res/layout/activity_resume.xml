@@ -137,11 +137,20 @@
                 android:textSize="16sp" />
 
             <TextView
-                android:id="@+id/reaisByDistance"
+                android:id="@+id/hoursByDay"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
                 android:layout_below="@+id/distanceByDay"
+                android:text="Horas/Dia"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/reaisByDistance"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_below="@+id/hoursByDay"
                 android:text="Reais/Distância"
                 android:textSize="16sp" />
 
