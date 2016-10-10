@@ -20,6 +20,8 @@ public class GraphGanhoCombustivel extends AppCompatActivity {
     private BarGraphSeries<DataPoint> mSeriesGanhoPorKm;
     private LineGraphSeries<DataPoint> mSeriesCombustivelPorKm;
     private LineGraphSeries<DataPoint> mSeriesPercent;
+    private LineGraphSeries<DataPoint> mSeriesPercentAverage;
+    private double earnGasAverage;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,22 +34,24 @@ public class GraphGanhoCombustivel extends AppCompatActivity {
 
         ArrayList<String> ganhokm_list = intent.getStringArrayListExtra("graphGanhoKm");
         ArrayList<String> combustivelkm_list = intent.getStringArrayListExtra("graphCombustivelKm");
+        earnGasAverage = (double) getIntent().getExtras().get("graphEarnGasAverage");
 
-        int dias = ganhokm_list.size();
+        int days = ganhokm_list.size();
         double y;
         double w;
         double z;
 
+        mSeriesPercent = new LineGraphSeries<>();
         mSeriesGanhoPorKm = new BarGraphSeries<>();
         mSeriesCombustivelPorKm = new LineGraphSeries<>();
-        mSeriesPercent = new LineGraphSeries<>();
-        for (int x = 0; x < dias; x++) {
+
+        for (int x = 0; x < days; x++) {
             y = Double.parseDouble(ganhokm_list.get(x));
             w = Double.parseDouble(combustivelkm_list.get(x));
             z = (w / y) * 100.0;
-            mSeriesGanhoPorKm.appendData(new DataPoint(x + 1, y), true, dias);
-            mSeriesCombustivelPorKm.appendData(new DataPoint(x + 1, w), true, dias);
-            mSeriesPercent.appendData(new DataPoint(x + 1, z), true, dias);
+            mSeriesGanhoPorKm.appendData(new DataPoint(x + 1, y), true, days);
+            mSeriesCombustivelPorKm.appendData(new DataPoint(x + 1, w), true, days);
+            mSeriesPercent.appendData(new DataPoint(x + 1, z), true, days);
         }
 
         graphView.getGridLabelRenderer().setHumanRounding(true);
@@ -66,6 +70,15 @@ public class GraphGanhoCombustivel extends AppCompatActivity {
         mSeriesPercent.setDrawDataPoints(true);
         mSeriesPercent.setDataPointsRadius(5);
         graphView.getGridLabelRenderer().setVerticalLabelsSecondScaleColor(Color.RED);
+        mSeriesPercentAverage = new LineGraphSeries<>();
+        mSeriesPercentAverage.appendData(new DataPoint(0, earnGasAverage),true,2);
+        mSeriesPercentAverage.appendData(new DataPoint(days + 1, earnGasAverage),true,2);
+        mSeriesPercentAverage.setTitle("Média Combustível/Ganho (%)");
+        mSeriesPercentAverage.setColor(Color.RED);
+        mSeriesPercentAverage.setDrawDataPoints(true);
+        mSeriesPercentAverage.setDataPointsRadius(10);
+        mSeriesPercentAverage.setThickness(2);
+        graphView.getSecondScale().addSeries(mSeriesPercentAverage);
 
         mSeriesGanhoPorKm.setDrawValuesOnTop(true);
         mSeriesGanhoPorKm.setValuesOnTopSize(20);
@@ -82,11 +95,8 @@ public class GraphGanhoCombustivel extends AppCompatActivity {
         mSeriesCombustivelPorKm.setTitle("Combustível (R$/km)");
         graphView.addSeries(mSeriesCombustivelPorKm);
 
-
-
-
-        graphView.setTitle("R$/km" + " - " + dias + " dias");
-        graphView.setTitleTextSize(50);
+        graphView.setTitle("R$/km" + " - " + days + " dias");
+        graphView.setTitleTextSize(30);
         graphView.getGridLabelRenderer().setPadding(20);
         graphView.getLegendRenderer().setVisible(true);
         graphView.getLegendRenderer().setAlign(LegendRenderer.LegendAlign.TOP);

@@ -71,7 +71,7 @@ public class Performance extends AppCompatActivity {
         graph.addSeries(mSeriesPerformance);
 
         graph.setTitle("Índice de Desempenho" + " - " + dias + " dias");
-        graph.setTitleTextSize(50);
+        graph.setTitleTextSize(30);
         graph.getGridLabelRenderer().setPadding(10);
         graph.getViewport().setMinX(0);
         graph.getViewport().setXAxisBoundsManual(true);

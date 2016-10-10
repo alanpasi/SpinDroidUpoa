@@ -109,10 +109,11 @@ public class Tools {
         double reaisByHourSum = 0.0;
         double indice;
         double indiceAverage;
+        int days = rideList.size();
 
         String data;
 
-        for (int i = 0; i < rideList.size(); i++ ){
+        for (int i = 0; i < days; i++ ){
             reaisByDistance = Double.parseDouble(rideList.get(i).getPayment()) / Double.parseDouble(rideList.get(i).getDistance());
             totalTime = Double.parseDouble(rideList.get(i).getTimeHour()) + (Double.parseDouble(rideList.get(i).getTimeMinute()) / 60.0);
             reaisByHour = Double.parseDouble(rideList.get(i).getPayment()) / totalTime;
@@ -123,7 +124,7 @@ public class Tools {
             graphData.add(data);
         }
 
-        indiceAverage = (reaisByDistanceSum / (double) rideList.size()) * (reaisByHourSum / (double) rideList.size());
+        indiceAverage = (reaisByDistanceSum / (double) days) * (reaisByHourSum / (double) days);
 
         intent.putStringArrayListExtra("graphData", graphData);
         intent.putExtra("graphDataAverage", indiceAverage);
@@ -139,11 +140,15 @@ public class Tools {
         Intent intent = new Intent(context, GraphGanhoCombustivel.class);
 
         double reaisByDistance;
+        double reaisByDistanceSum = 0.0;
         double gasByDistance;
+        double gasByDistanceSum = 0.0;
+        double earnGasAverage = 0.0;
+        int days = rideList.size();
 
         String data_a, data_b;
 
-        for (int i = 0; i < rideList.size(); i++ ){
+        for (int i = 0; i < days; i++ ){
             reaisByDistance = Double.parseDouble(rideList.get(i).getPayment()) /
                     Double.parseDouble(rideList.get(i).getDistance());
 //            gasByDistance = GasPrice / GasConsumption
@@ -152,10 +157,15 @@ public class Tools {
             data_b = String.valueOf(gasByDistance);
             graphGanhoKm.add(data_a);
             graphCombustivelKm.add(data_b);
+            reaisByDistanceSum += reaisByDistance;
+            gasByDistanceSum += gasByDistance;
         }
+
+        earnGasAverage = (gasByDistanceSum / reaisByDistanceSum) * 100.0;
 
         intent.putStringArrayListExtra("graphGanhoKm", graphGanhoKm);
         intent.putStringArrayListExtra("graphCombustivelKm", graphCombustivelKm);
+        intent.putExtra("graphEarnGasAverage", earnGasAverage);
 
         context.startActivity(intent);
     }
