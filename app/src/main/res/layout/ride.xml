@@ -139,6 +139,32 @@
             android:text="Percentual"
             android:textSize="16sp" />
 
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="1dp"
+            android:layout_below="@id/rvcombustivelpercentual"
+            android:background="@color/colorAccent" />
+
+        <TextView
+            android:id="@+id/rvsaldotxt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/rvcombustivelpercentual"
+            android:layout_toLeftOf="@+id/rvsaldo"
+            android:text="Saldo"
+            android:textSize="18sp"
+            android:textStyle="normal|bold"/>
+
+        <TextView
+            android:id="@+id/rvsaldo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_below="@+id/rvcombustivelpercentual"
+            android:text="Saldo"
+            android:textSize="18sp"
+            android:textStyle="normal|bold"/>
+
         <TextView
             android:id="@+id/rvindice"
             android:layout_width="wrap_content"

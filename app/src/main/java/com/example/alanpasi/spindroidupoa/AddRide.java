@@ -180,7 +180,9 @@ public class AddRide extends FragmentActivity {
                 && !TextUtils.isEmpty(paymentValue)
                 && !TextUtils.isEmpty(quantityValue)
                 && !TextUtils.isEmpty(totalHoursValue)
-                && !TextUtils.isEmpty(totalMinutesValue)){
+                && !TextUtils.isEmpty(totalMinutesValue)
+                && !TextUtils.isEmpty(consumoCombustivel)
+                && !TextUtils.isEmpty(precoCombustivel)){
 
             DatabaseReference newPost = mRideRef.push();
             newPost.child("date").setValue(rideDateValue);

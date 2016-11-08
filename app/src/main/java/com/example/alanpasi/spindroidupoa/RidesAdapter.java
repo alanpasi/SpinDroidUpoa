@@ -117,6 +117,10 @@ class RidesAdapter extends RecyclerView.Adapter<RidesAdapter.ViewHolder> {
         String indiceFinal = formatter.format(indice);
         holder.indice.setText(indiceFinal);
 
+        double saldo = paymentcalc - combustivelcalc;
+        String saldoString = "  RS " + formatter.format(saldo);
+        holder.saldo.setText(saldoString);
+
         double distanceSum = 0;
         double timeHourSum = 0;
         double timeMinuteSum = 0;
@@ -208,7 +212,7 @@ class RidesAdapter extends RecyclerView.Adapter<RidesAdapter.ViewHolder> {
     public class ViewHolder extends RecyclerView.ViewHolder {
 
         TextView dateofWeek, weekofyear, reaisbydistance, reaisbyhour ,date,
-                distance, payment, quantity, timeHour, timeMinute, indice, combustivel, percentual;
+                distance, payment, quantity, timeHour, timeMinute, indice, combustivel, percentual, saldo;
 
         ImageView indiceimageview;
 
@@ -231,6 +235,7 @@ class RidesAdapter extends RecyclerView.Adapter<RidesAdapter.ViewHolder> {
             combustivel = (TextView) itemView.findViewById(rvcombustivel);
             percentual = (TextView) itemView.findViewById(R.id.rvcombustivelpercentual);
             indiceimageview = (ImageView) itemView.findViewById(R.id.rvimageview);
+            saldo = (TextView) itemView.findViewById(R.id.rvsaldo);
         }
     }
 

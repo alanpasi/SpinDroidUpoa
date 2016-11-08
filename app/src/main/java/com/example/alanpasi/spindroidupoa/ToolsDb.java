@@ -36,7 +36,8 @@ public class ToolsDb {
                             day.getQuantity(),
                             day.getTimeHour(),
                             day.getTimeMinute(),
-                            day.getImageView()));
+                            day.getImageView() ,
+                            day.getSaldo()));
                 }
                 mRecyclerView.setAdapter(adapter);
             }

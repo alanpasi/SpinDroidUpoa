@@ -17,11 +17,14 @@ public class Ride {
     private String timeHour;
     private String timeMinute;
     private ImageView imageView;
+    private String saldo;
 
     public Ride() {
     }
 
-    public Ride(String date, String distance, String gasConsumption, String gasPrice, String payment, String quantity, String timeHour, String timeMinute, ImageView imageView) {
+    public Ride(String date, String distance, String gasConsumption, String gasPrice,
+                String payment, String quantity, String timeHour, String timeMinute,
+                ImageView imageView, String saldo) {
         this.date = date;
         this.distance = distance;
         this.payment = payment;
@@ -31,6 +34,7 @@ public class Ride {
         this.timeHour = timeHour;
         this.timeMinute = timeMinute;
         this.imageView = imageView;
+        this.saldo = saldo;
     }
 
     public String getDate() {
@@ -103,5 +107,13 @@ public class Ride {
 
     public void setImageView(ImageView imageView) {
         this.imageView = imageView;
+    }
+
+    public String getSaldo() {
+        return saldo;
+    }
+
+    public void setSaldo(String saldo) {
+        this.saldo = saldo;
     }
 }
