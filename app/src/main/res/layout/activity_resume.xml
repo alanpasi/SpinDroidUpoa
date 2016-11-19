@@ -62,7 +62,8 @@
                 android:layout_alignParentEnd="true"
                 android:layout_below="@+id/quantity"
                 android:text="Pagamento"
-                android:textSize="16sp" />
+                android:textSize="16sp"
+                android:textStyle="normal|bold" />
 
             <TextView
                 android:id="@+id/distance"
@@ -164,7 +165,6 @@
                 android:textSize="16sp" />
 
 
-
             <TextView
                 android:id="@+id/lblgas"
                 android:layout_width="wrap_content"
@@ -189,7 +189,8 @@
                 android:layout_alignParentEnd="true"
                 android:layout_below="@id/line_gas"
                 android:text="Combustível"
-                android:textSize="16sp" />
+                android:textSize="16sp"
+                android:textStyle="normal|bold" />
 
             <TextView
                 android:id="@+id/gaspercent"
@@ -243,6 +244,33 @@
                 android:layout_below="@id/line_indice"
                 android:text="Índice"
                 android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/lblSaldo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_below="@id/indice"
+                android:text="Saldo"
+                android:textSize="16sp"
+                android:textStyle="normal|bold" />
+
+            <View
+                android:id="@+id/line_saldo"
+                android:layout_width="fill_parent"
+                android:layout_height="1dp"
+                android:layout_below="@id/lblSaldo"
+                android:background="@color/colorAccent" />
+
+            <TextView
+                android:id="@+id/saldo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_below="@id/line_saldo"
+                android:text="Saldo"
+                android:textSize="16sp"
+                android:textStyle="normal|bold" />
 
         </RelativeLayout>
 

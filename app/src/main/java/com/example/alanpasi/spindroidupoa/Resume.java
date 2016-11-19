@@ -27,6 +27,7 @@ public class Resume extends AppCompatActivity {
     private TextView gasPercent;
     private TextView gasByDistance;
     private TextView gasByDay;
+    private TextView balance;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,6 +59,8 @@ public class Resume extends AppCompatActivity {
 
         indice = (TextView) findViewById(R.id.indice);
 
+        balance = (TextView) findViewById(R.id.saldo);
+
         dateNow.setText(formattedDate);
         Bundle bundle = getIntent().getExtras();
         distance.setText(bundle.getString("distance"));
@@ -79,5 +82,7 @@ public class Resume extends AppCompatActivity {
         gasByDistance.setText(bundle.getString("gasByDistance"));
 
         indice.setText(bundle.getString("indice"));
+
+        balance.setText(bundle.getString("saldo"));
     }
 }

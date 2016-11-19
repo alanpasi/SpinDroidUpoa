@@ -68,6 +68,9 @@ public class Tools {
 //      Desempenho - Resumo
         double indice = reaisByDistance * reaisByHour;
         String indiceMid = formatter.format(indice);
+//      Saldo
+        double balance = paymentSum - gasSum;
+        String saldo = "R$ " + formatter.format(balance);
 
         Intent intent = new Intent(context, Resume.class);
 
@@ -88,6 +91,7 @@ public class Tools {
         bundle.putString("distanceByDay", distanceByDayMid);
         bundle.putString("hoursByDay", hourByDayAverage);
         bundle.putString("indice", indiceMid);
+        bundle.putString("saldo", saldo);
 
         intent.putExtras(bundle);
 

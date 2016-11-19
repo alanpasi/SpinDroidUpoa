@@ -152,8 +152,7 @@
             android:layout_below="@+id/rvcombustivelpercentual"
             android:layout_toLeftOf="@+id/rvsaldo"
             android:text="Saldo"
-            android:textSize="18sp"
-            android:textStyle="normal|bold"/>
+            android:textSize="18sp"/>
 
         <TextView
             android:id="@+id/rvsaldo"
