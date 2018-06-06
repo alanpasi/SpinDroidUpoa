@@ -15,11 +15,19 @@
       },
       "oauth_client": [
         {
+          "client_id": "291609301367-4a92ufn4jcognfqji92t93abdm6nfqrp.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.alanpasi.spindroidupoa",
+            "certificate_hash": "d1accfe122fe7cd3b10de457bdfe060f2a6c9969"
+          }
+        },
+        {
           "client_id": "291609301367-4s7ftoavsnv8t22e068o6kekbok4n90a.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "com.example.alanpasi.spindroidupoa",
-            "certificate_hash": "8236A0578DBDF1DF27BF10E572ABF980B1AC225E"
+            "certificate_hash": "8236a0578dbdf1df27bf10e572abf980b1ac225e"
           }
         },
         {
